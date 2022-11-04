@@ -1,0 +1,157 @@
+{
+    "sheet" : "Final Phase",
+    "finals" : [
+        {
+            "name" : "AQ42",
+            "score" : "AQ43",
+            "style" : "AQ44"
+        },
+        {
+            "name" : "AS42",
+            "score" : "AS43",
+            "style" : "AS44"
+        }
+    ],
+    "secondaryFinals" : [
+        {
+            "name" : "AQ51",
+            "score" : "AQ52",
+            "style" : "AQ53"
+        },
+        {
+            "name" : "AS51",
+            "score" : "AS52",
+            "style" : "AS53"
+        }
+    ],
+    "rounds" : [
+        {
+            "startRow" : 3,
+            "seedCol" : "A",
+            "nameCol" : "B",
+            "scoreCol" : "C",
+            "styleCol" : "D",
+            "athleteSize" : 1,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 4,
+                    "spacing" : 3
+                },
+                {
+                    "level" : 1,
+                    "blocks" : 2,
+                    "spacing" : 2
+                },
+                {
+                    "level" : 2,
+                    "blocks" : 4,
+                    "spacing" : 1
+                },
+                {
+                    "level" : 3,
+                    "blocks" : 2,
+                    "spacing" : 0
+                }
+            ]
+        },
+        {
+            "startRow" : 3,
+            "nameCol" : "I",
+            "scoreCol" : "J",
+            "styleCol" : "K",
+            "athleteSize" : 2,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 4,
+                    "spacing" : 3
+                },
+                {
+                    "level" : 1,
+                    "blocks" : 2,
+                    "spacing" : 2
+                },
+                {
+                    "level" : 2,
+                    "blocks" : 4,
+                    "spacing" : 1
+                }
+            ]
+        },
+        {
+            "startRow" : 5,
+            "nameCol" : "P",
+            "scoreCol" : "Q",
+            "styleCol" : "R",
+            "athleteSize" : 3,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 4,
+                    "spacing" : 7
+                },
+                {
+                    "level" : 1,
+                    "blocks" : 2,
+                    "spacing" : 6
+                },
+                {
+                    "level" : 2,
+                    "blocks" : 2,
+                    "spacing" : 1
+                }
+            ]
+        },
+        {
+            "startRow" : 10,
+            "nameCol" : "Y",
+            "scoreCol" : "Z",
+            "styleCol" : "AA",
+            "athleteSize" : 4,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 4,
+                    "spacing" : 17
+                },
+                {
+                    "level" : 1,
+                    "blocks" : 2,
+                    "spacing" : 2
+                }
+            ]
+        },
+        {
+            "startRow" : 18,
+            "nameCol" : "AH",
+            "scoreCol" : "AI",
+            "styleCol" : "AJ",
+            "athleteSize" : 5,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 2,
+                    "spacing" : 33
+                },
+                {
+                    "level" : 1,
+                    "blocks" : 2,
+                    "spacing" : 11
+                }
+            ]
+        },
+        {
+            "startRow" : 26,
+            "nameCol" : "AQ",
+            "athleteSize" : 5,
+            "layout" : [
+                {
+                    "level" : 0,
+                    "blocks" : 2,
+                    "spacing" : 49
+                }
+            ]
+        }
+    ]
+}

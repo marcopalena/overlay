@@ -1,0 +1,3327 @@
+{
+    "arenas": 2,
+    "athletes": {
+        "Sarda Davide": {
+            "name": "Sarda Davide",
+            "n": "4",
+            "pool": "Girone B",
+            "war": "1038",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Cafaro Raffaele": {
+            "name": "Cafaro Raffaele",
+            "n": "4",
+            "pool": "Girone A",
+            "war": "217",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Grassi Vittorio": {
+            "name": "Grassi Vittorio",
+            "n": "3",
+            "pool": "Girone C",
+            "war": "162",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Comito Jacopo": {
+            "name": "Comito Jacopo",
+            "n": "3",
+            "pool": "Girone D",
+            "war": "140",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Brondolo Marco": {
+            "name": "Brondolo Marco",
+            "n": "3",
+            "pool": "Girone A",
+            "war": "138",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Oliveri Guglielmo": {
+            "name": "Oliveri Guglielmo",
+            "n": "3",
+            "pool": "Girone D",
+            "war": "127",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Conserva Marco": {
+            "name": "Conserva Marco",
+            "n": "3",
+            "pool": "Girone B",
+            "war": "124",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Brondolo Elio": {
+            "name": "Brondolo Elio",
+            "n": "3",
+            "pool": "Girone C",
+            "war": "76",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Cigolini Juan": {
+            "name": "Cigolini Juan",
+            "n": "3",
+            "pool": "Girone B",
+            "war": "56",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Marinone Francesco": {
+            "name": "Marinone Francesco",
+            "n": "3",
+            "pool": "Girone A",
+            "war": "19",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Barbieri Matteo": {
+            "name": "Barbieri Matteo",
+            "n": "2",
+            "pool": "Girone D",
+            "war": "69",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Costanza Enrico": {
+            "name": "Costanza Enrico",
+            "n": "2",
+            "pool": "Girone C",
+            "war": "47",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Palena Marco": {
+            "name": "Palena Marco",
+            "n": "2",
+            "pool": "Girone A",
+            "war": "22",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Decastelli Tommaso": {
+            "name": "Decastelli Tommaso",
+            "n": "2",
+            "pool": "Girone D",
+            "war": "16",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Bonino Lorenzo": {
+            "name": "Bonino Lorenzo",
+            "n": "2",
+            "pool": "Girone B",
+            "war": "15",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Ramezzana Martina": {
+            "name": "Ramezzana Martina",
+            "n": "2",
+            "pool": "Girone C",
+            "war": "13",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Cariaga Jean Claude": {
+            "name": "Cariaga Jean Claude",
+            "n": "2",
+            "pool": "Girone D",
+            "war": "12",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Luzio Marco": {
+            "name": "Luzio Marco",
+            "n": "2",
+            "pool": "Girone C",
+            "war": "10",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Decastelli Riccardo": {
+            "name": "Decastelli Riccardo",
+            "n": "2",
+            "pool": "Girone A",
+            "war": "9",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Buzzone Monica": {
+            "name": "Buzzone Monica",
+            "n": "2",
+            "pool": "Girone B",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Colombatto Claudio": {
+            "name": "Colombatto Claudio",
+            "n": "1",
+            "pool": "Girone B",
+            "war": "3",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Ferraresi Giorgio": {
+            "name": "Ferraresi Giorgio",
+            "n": "1",
+            "pool": "Girone C",
+            "war": "3",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Palladino Giulia": {
+            "name": "Palladino Giulia",
+            "n": "1",
+            "pool": "Girone A",
+            "war": "3",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Baudino Luisa": {
+            "name": "Baudino Luisa",
+            "n": "1",
+            "pool": "Girone D",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Cerato Samuel": {
+            "name": "Cerato Samuel",
+            "n": "1",
+            "pool": "Girone D",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Falco Marina": {
+            "name": "Falco Marina",
+            "n": "1",
+            "pool": "Girone B",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Fossati Gabriele": {
+            "name": "Fossati Gabriele",
+            "n": "1",
+            "pool": "Girone A",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Garagliano Roberta": {
+            "name": "Garagliano Roberta",
+            "n": "1",
+            "pool": "Girone C",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Gastaldi Alberto": {
+            "name": "Gastaldi Alberto",
+            "n": "1",
+            "pool": "Girone A",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Martino Vittoria": {
+            "name": "Martino Vittoria",
+            "n": "1",
+            "pool": "Girone C",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        },
+        "Pigone Stefano": {
+            "name": "Pigone Stefano",
+            "n": "1",
+            "pool": "Girone B",
+            "war": "0",
+            "score": 0,
+            "style": 0,
+            "rank": -1,
+            "forms": [],
+            "seed": ""
+        }
+    },
+    "pools": {
+        "A": {
+            "id": "A",
+            "name": " Girone A",
+            "arena": "A",
+            "round": "0",
+            "athletes": [
+                "Cafaro Raffaele",
+                "Brondolo Marco",
+                "Marinone Francesco",
+                "Palena Marco",
+                "Decastelli Riccardo",
+                "Palladino Giulia",
+                "Fossati Gabriele",
+                "Gastaldi Alberto"
+            ],
+            "matches": [
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 0,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 1,
+                    "firstContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 2,
+                    "firstContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 3,
+                    "firstContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 4,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 5,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 6,
+                    "firstContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 7,
+                    "firstContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 8,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 9,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 10,
+                    "firstContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 11,
+                    "firstContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 12,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 13,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 14,
+                    "firstContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 15,
+                    "firstContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 16,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 17,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 18,
+                    "firstContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 19,
+                    "firstContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 20,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 21,
+                    "firstContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 22,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 23,
+                    "firstContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 24,
+                    "firstContender": {
+                        "contender": "Cafaro Raffaele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Fossati Gabriele",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 25,
+                    "firstContender": {
+                        "contender": "Brondolo Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Riccardo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 26,
+                    "firstContender": {
+                        "contender": "Marinone Francesco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Gastaldi Alberto",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 27,
+                    "firstContender": {
+                        "contender": "Palena Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Palladino Giulia",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                }
+            ]
+        },
+        "B": {
+            "id": "B",
+            "name": "Girone B",
+            "arena": "B",
+            "round": "0",
+            "athletes": [
+                "Sarda Davide",
+                "Conserva Marco",
+                "Cigolini Juan",
+                "Bonino Lorenzo",
+                "Buzzone Monica",
+                "Colombatto Claudio",
+                "Falco Marina",
+                "Pigone Stefano"
+            ],
+            "matches": [
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 0,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 1,
+                    "firstContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 2,
+                    "firstContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 3,
+                    "firstContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 4,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 5,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 6,
+                    "firstContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 7,
+                    "firstContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 8,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 9,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 10,
+                    "firstContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 11,
+                    "firstContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 12,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 13,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 14,
+                    "firstContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 15,
+                    "firstContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 16,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 17,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 18,
+                    "firstContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 19,
+                    "firstContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 20,
+                    "firstContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 21,
+                    "firstContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 22,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 23,
+                    "firstContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 24,
+                    "firstContender": {
+                        "contender": "Sarda Davide",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Falco Marina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 25,
+                    "firstContender": {
+                        "contender": "Conserva Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Buzzone Monica",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 26,
+                    "firstContender": {
+                        "contender": "Cigolini Juan",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Pigone Stefano",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 27,
+                    "firstContender": {
+                        "contender": "Bonino Lorenzo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Colombatto Claudio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                }
+            ]
+        },
+        "C": {
+            "id": "C",
+            "name": "Girone C",
+            "arena": "A",
+            "round": "1",
+            "athletes": [
+                "Grassi Vittorio",
+                "Brondolo Elio",
+                "Costanza Enrico",
+                "Ramezzana Martina",
+                "Luzio Marco",
+                "Ferraresi Giorgio",
+                "Garagliano Roberta",
+                "Martino Vittoria"
+            ],
+            "matches": [
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 0,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 1,
+                    "firstContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 2,
+                    "firstContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 3,
+                    "firstContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 4,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 5,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 6,
+                    "firstContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 7,
+                    "firstContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 8,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 9,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 10,
+                    "firstContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 11,
+                    "firstContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 12,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 13,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 14,
+                    "firstContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 15,
+                    "firstContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 16,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 17,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 18,
+                    "firstContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 19,
+                    "firstContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 20,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 21,
+                    "firstContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 22,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 23,
+                    "firstContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 24,
+                    "firstContender": {
+                        "contender": "Grassi Vittorio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Garagliano Roberta",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 25,
+                    "firstContender": {
+                        "contender": "Brondolo Elio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Luzio Marco",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 26,
+                    "firstContender": {
+                        "contender": "Costanza Enrico",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Martino Vittoria",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 27,
+                    "firstContender": {
+                        "contender": "Ramezzana Martina",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Ferraresi Giorgio",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                }
+            ]
+        },
+        "D": {
+            "id": "D",
+            "name": "Girone D",
+            "arena": "B",
+            "round": "1",
+            "athletes": [
+                "Comito Jacopo",
+                "Oliveri Guglielmo",
+                "Barbieri Matteo",
+                "Decastelli Tommaso",
+                "Cariaga Jean Claude",
+                "Baudino Luisa",
+                "Cerato Samuel"
+            ],
+            "matches": [
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 0,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 1,
+                    "firstContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 2,
+                    "firstContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 3,
+                    "firstContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 4,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 5,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 6,
+                    "firstContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 7,
+                    "firstContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 8,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 9,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 10,
+                    "firstContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 11,
+                    "firstContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 12,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 13,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 14,
+                    "firstContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 15,
+                    "firstContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 16,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 17,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 18,
+                    "firstContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 19,
+                    "firstContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 20,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 21,
+                    "firstContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 22,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 23,
+                    "firstContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 24,
+                    "firstContender": {
+                        "contender": "Comito Jacopo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cerato Samuel",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 25,
+                    "firstContender": {
+                        "contender": "Oliveri Guglielmo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Cariaga Jean Claude",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": true,
+                    "isComplete": true,
+                    "id": 26,
+                    "firstContender": {
+                        "contender": "Barbieri Matteo",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "RITIRATO",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                },
+                {
+                    "isBye": false,
+                    "isComplete": true,
+                    "id": 27,
+                    "firstContender": {
+                        "contender": "Decastelli Tommaso",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    },
+                    "secondContender": {
+                        "contender": "Baudino Luisa",
+                        "score": 0,
+                        "style": 0,
+                        "stylePartials": [
+                            0
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "finalPhase": [
+        [
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 0,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 1,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 2,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 3,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 4,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 5,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 6,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 7,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 8,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 9,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 10,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 11,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 12,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 13,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 14,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 15,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            }
+        ],
+        [
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 0,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 1,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 2,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 3,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 4,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 5,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 6,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 7,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            }
+        ],
+        [
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 0,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 1,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 2,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 3,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            }
+        ],
+        [
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 0,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 1,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            }
+        ],
+        [
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 0,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            },
+            {
+                "isBye": false,
+                "isComplete": false,
+                "id": 1,
+                "firstContender": {
+                    "contender": "TBA",
+                    "score": "",
+                    "style": "",
+                    "stylePartials": []
+                },
+                "secondContender": {
+                    "contender": "TBA",
+                    "score": 0,
+                    "style": 0,
+                    "stylePartials": []
+                }
+            }
+        ]
+    ]
+}

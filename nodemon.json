@@ -1,0 +1,10 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    "dump/", 
+    "public/", 
+    "node_modules/"
+  ],
+  "ext" : "js",
+  "legacyWatch": true
+}

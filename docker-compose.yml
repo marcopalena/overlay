@@ -1,0 +1,29 @@
+####################################################################################################################
+# Overlay
+####################################################################################################################
+version: '3'
+name: overlay
+services:
+  node:
+    build: 
+      context: .
+    restart: unless-stopped
+    command: npm run dev
+    container_name: ${COMPOSE_PROJECT_NAME}_node
+    volumes:
+      - .:/usr/app/
+      - node_modules:/usr/app/node_modules
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: './auth.json'
+    stdin_open: true
+    tty: true  
+
+networks:
+  backend: {}
+
+volumes:
+  node_modules:

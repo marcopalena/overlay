@@ -1,0 +1,113 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#frame-bottom-image {
+  display: inline;
+  position: absolute;
+}
+
+.overlay-container {
+  margin: 0;
+  padding: 0;
+  width: 1280px;
+  background: url(imgs/bars_transition_sprite_open.png) no-repeat; -9999px -9999px;
+  background-size: 0;
+}
+
+#frame-central-arena {
+  position: absolute;
+  display: none;
+  z-index: 1;
+}
+
+#frame-central-blade {
+  position: absolute;
+  display: none;
+  z-index: 0;
+}
+
+#frame-central-blade-shadow-clip {
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+#frame-central-arena-shadow-clip {
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+#frame-lateral-wings {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+#frame-bottom-shadow-clip {
+  position: absolute;
+  z-index: 3;
+}
+
+#frame-background {
+  display: inline;
+  top: 0;
+  position: absolute;
+  mask-repeat: no-repeat;
+  mask-mode: alpha;
+  mask: url(imgs/bars_transition_sprite_open.png);
+  mask-size: 7500% 100%;
+  mask-position: 100% 0;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-mode: alpha;
+  -webkit-mask: url(imgs/bars_transition_sprite_open.png);
+  -webkit-mask-size: 7500% 100%;
+  -webkit-mask-position: 100% 0;
+  z-index: -1;
+}
+
+#academies {
+  display: none;
+  top: 0;
+  position: absolute;
+  z-index: 3;
+}
+
+.assaults {
+  z-index: 4;
+}
+
+#scores {
+  display: none;
+}
+
+#info {
+  display: none;
+  top: 0;
+  position: absolute;
+  z-index: 3;
+}
+
+.form-icon {
+  transform-origin: 50% 50%;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+  width: 1280px;
+  height: auto;
+}
+
+button {
+  position: absolute;
+  bottom: 20px;
+  padding: 12px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}

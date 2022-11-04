@@ -1,0 +1,770 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/rpg-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
+        <style>
+            body {
+                background-color: #20262e;
+            }
+
+            .form-buttons {
+                text-align: left;
+                overflow: hidden;
+            }
+
+            .form {
+                display: inline-block;
+                min-width: 36px;
+                min-height: 36px;
+                padding: 3px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .form-button,.form-button:focus,.form-button:active:focus,.form-button.active:focus,
+            .form-button:active.focus,.form-button.active.focus {
+                box-shadow: none !important;
+            }
+
+            .ra {
+            	display: inline-block;
+            	text-decoration: none;
+            }
+
+            .row.form-group {
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+
+            .card-footer {
+                margin-right: 0px;
+                margin-left: 0px;
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+
+            /******************************************************************************************************
+                                                        CUSTOM CHECKBOX SWITCH
+            ******************************************************************************************************/
+            .custom-checkbox {
+                min-height: 1rem;
+                padding-left: 0;
+                margin-right: 0;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .custom-control-indicator {
+                content: "";
+                display: inline-block;
+                position: relative;
+                width: 30px;
+                height: 10px;
+                background-color: #818181;
+                border-radius: 15px;
+                margin-right: 10px;
+                -webkit-transition: background .3s ease;
+                transition: background .3s ease;
+                vertical-align: middle;
+                margin: 0 16px;
+                box-shadow: none;
+            }
+
+            .custom-checkbox .custom-control-indicator:after {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                background-color: #f1f1f1;
+                border-radius: 21px;
+                box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+                left: -2px;
+                top: -4px;
+                -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+                transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+                background-color: #007bff;
+                background-image: none;
+                box-shadow: none !important;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+                background-color: #007bff;
+                left: 15px;
+            }
+
+            .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+                box-shadow: none !important;
+            }
+
+            #timer {
+                height : 100%;
+                display: block;
+                padding-top: 20px;
+            }
+
+            #timer-inner {
+                display: block;
+                font-weight: bold;
+                font-size: 4rem;
+            }
+
+            .contenderScore {
+                display: block;
+                font-weight: bold;
+                font-size: 4rem;
+            }
+
+            #consumed {
+                display: block;
+                font-weight: bold;
+                font-size: 2rem;
+            }
+
+            #timeout {
+                display: block;
+            }
+
+            #phase {
+                display: block;
+            }
+
+            #assaults {
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid mt-1 mt-sm-5 px-1 px-sm-5" style="min-width: 350px;">
+            <div class="card border-secondary mb-3">
+                <form id="scorekeeping-form" role="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="row mb-2">
+                                    <div class="col-12 text-center mb-2">
+                                        <strong>Left contender</strong>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <input type="text" class="form-control" id="leftContenderName" placeholder="Name">
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <input type="text" class="form-control" id="leftContenderSchool" placeholder="School">
+                                    </div>
+                                    <div class="col-12 text-center form-buttons mb-2">
+                                        <div class="btn-group-toggle btn-group" id="leftContenderClosedForms" data-toggle="buttons">
+                                            <label class="btn btn-outline-primary form-button form" data-form="1">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="2">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="3">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="4">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="5">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="6">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="7">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <span class="contenderScore" id="leftContenderScore">0</span>
+                                        <span>Score</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="row mb-2" style="height : 100%;">
+                                    <div class="col-12 text-center mb-2" style="height : 100%;">
+                                            <div id="timer">
+                                                <span id="timer-inner">
+                                                    00:00
+                                                </span>
+                                                <input type="text" class="form-control" id="timeoutInput" placeholder="90">
+                                                <span id="phase">
+                                                </span>
+                                                <input type="text" class="form-control" id="assaultsInput" placeholder="3">
+                                                <input type="text" class="form-control" id="phaseInput" placeholder="Phase">
+                                                <span id="consumed">
+                                                    0
+                                                </span>
+                                                <span>Assaults</span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="row">
+                                    <div class="col-12 text-center mb-2">
+                                        <strong>Right contender</strong>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <input type="text" class="form-control" id="rightContenderName" placeholder="Name">
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <input type="text" class="form-control" id="rightContenderSchool" placeholder="School">
+                                    </div>
+                                    <div class="col-12 text-center form-buttons">
+                                        <div class="btn-group-toggle btn-group" id="rightContenderClosedForms" data-toggle="buttons">
+                                            <label class="btn btn-outline-primary form-button form" data-form="1">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="2">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="3">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="4">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="5">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="6">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                            <label class="btn btn-outline-primary form-button form" data-form="7">
+                                                <input type="checkbox" autocomplete="off">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <span class="contenderScore" id="rightContenderScore">0</span>
+                                        <span>Score</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding-top: 5px">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <strong>Overlay frame controls</strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button type="button" id="prepare-button" class="btn btn-primary btn-rounded">Prepare Fight</button>
+                                <button type="button" id="finish-button" class="btn btn-primary btn-rounded">Finish Fight</button>
+                                <button type="button" id="update-button" class="btn btn-primary btn-rounded">Update Match</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding-top: 5px">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <strong>Fight timer controls</strong>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5px">
+                            <div class="col-12 text-center">
+                                <button type="button" id="timer-control-button" class="btn btn-primary btn-rounded" alt="Start fight timer"><i class="fas fa-stopwatch"></i><span class="collapse-label"> Start Timer</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="row mb-2">
+                                    <div class="col-12 mb-2">
+                                        <strong>Left contender</strong>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <!--<button type="button" id="clear-left-button" class="btn btn-primary btn-rounded disabled" alt="Clear left contender score"><i class="fas fa-eraser"></i></button>-->
+                                        <button type="button" id="plus-left-button" class="btn btn-primary btn-rounded" alt="Increment left contender score"><i class="fas fa-plus-circle"></i></button>
+                                        <button type="button" id="minus-left-button" class="btn btn-primary btn-rounded" alt="Decrement left contender score"><i class="fas fa-minus-circle"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="row mb-2">
+                                    <div class="col-12 mb-2">
+                                        <strong>Assaults controls</strong>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <!--<button type="button" id="nullo-button" class="btn btn-primary btn-rounded disabled" alt="Assault results in Nullo"><i class="fas fa-times"></i> Nullo</button>-->
+                                        <button type="button" id="doppio-button" class="btn btn-primary btn-rounded" alt="Assault results in Doppio"><i class="fas fa-check-double"></i> Doppio</button>
+                                        <button type="button" id="restore-button" class="btn btn-primary btn-rounded" alt="Restore an assault"><i class="fas fa-fast-backward"></i> Restore</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="row mb-2">
+                                    <div class="col-12 mb-2">
+                                        <strong>Right contender</strong>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <!--<button type="button" id="clear-right-button" class="btn btn-primary btn-rounded disabled" alt="Clear right contender score"><i class="fas fa-eraser"></i></button>-->
+                                        <button type="button" id="plus-right-button" class="btn btn-primary btn-rounded" alt="Increment right contender score"><i class="fas fa-plus-circle"></i></button>
+                                        <button type="button" id="minus-right-button" class="btn btn-primary btn-rounded" alt="Decrement right contender score"><i class="fas fa-minus-circle"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="popper.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="moment.js"></script>
+        <script src="TweenMax.min.js"></script>
+        <script src="countimer2.js"></script>
+        <script src="tempusdominus-bootstrap-4.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+
+                $('time')
+
+                // Manage timer
+                var isTimerStarted = false;
+                var isTimeElapsed = false;
+                var isTimerPaused = true;
+                var timeout = 0;
+                function startTimer(){
+                    if(!isTimerStarted) {
+                        isTimerStarted = true;
+                        $('#timer').countimer('start');
+                    } else {
+                        resumeTimer();
+                    }
+                }
+
+                function stopTimer(){
+                    $('#timer').countimer('stop');
+                }
+
+                function resumeTimer(){
+                    $('#timer').countimer('resume');
+                }
+
+                function setTimer(min, secs) {
+                    $('#timer-inner').text(min.toString().padStart(2, '0') + ":" + secs.toString().padStart(2, '0'));
+                }
+
+                // Initialize timer
+                $('#timer').countimer({
+                    displayMode : 3,
+                    useHours : false,
+                    autoStart : false,
+                    enableEvents: true
+                }).on('second', function(evt, time){
+                    var elapsed = time.original.minutes*60 + time.original.seconds;
+                    if(elapsed >= parseInt($('#timeoutInput').val())) {
+
+                        // Set timer booming
+                        var tl = new TimelineMax();
+                        tl.to(innerTimer, 0.2, {scale: 1.2, transformOrigin: "50% 50%", autoAlpha: 0})
+                          .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                        // Stop timer
+                        stopTimer();
+                        isTimeElapsed = true;
+
+                        // Send pause fight timer to overlay
+                        $.ajax({
+                            url: '/pauseFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : "MASTER"
+                            }),
+                            success: function() {
+                            }
+                        });
+
+                        // Disable timer button
+                        $('#timer-control-button').addClass('disabled');
+
+                    } else if(elapsed >= parseInt($('#timeoutInput').val()) - 5) {
+
+                        // Set timer yellow
+                        var innerTimer = $('#timer-inner');
+                        innerTimer.css("color", "red");
+
+                        // Set timer booming
+                        var tl = new TimelineMax();
+                        tl.to(innerTimer, 0.2, {scale: 1.2, transformOrigin: "50% 50%", autoAlpha: 0})
+                          .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                    } else if(elapsed >= parseInt($('#timeoutInput').val()) - 10) {
+
+                        // Set timer yellow
+                        var innerTimer = $('#timer-inner');
+                        innerTimer.css("color", "orange");
+
+                        // Set timer booming
+                        var tl = new TimelineMax();
+                        tl.to(innerTimer, 0.2, {scale: 1.1, transformOrigin: "50% 50%", autoAlpha: 0})
+                          .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                    }
+                });
+
+                function toggleFormBox(formBox){
+
+                    // Toggle underlying checkbox checked property
+                    var $checkBox = formBox.find('[type=checkbox]');
+                    $checkBox.prop('checked',!$checkBox.prop('checked')).change();
+
+                    // Invert form icon color
+                    var isChecked = $checkBox.is(':checked');
+                    if(isChecked) {
+                        formBox.addClass("active");
+                        formBox.css("background-image", "url(imgs/f" + formBox.data('form') + "b.svg)");
+                    } else {
+                        formBox.removeClass("active");
+                        formBox.css("background-image", "url(imgs/f" + formBox.data('form') + ".svg)");
+                    }
+                }
+
+                // Setup forms toggle buttons
+                $('.form[data-form]').each(function(index, value) {
+
+                    // Set checkbox buttons form icons background images
+                    $(this).css("background-image", "url(imgs/f" + $(this).data('form') + ".svg)");
+                    $(this).css("background-size", "30px 30px");
+                });
+
+                /*********************************************************************************************************************
+                                                                SCOREKEEPER CONTROLS
+                *********************************************************************************************************************/
+
+                // Manage the "prepare" button action
+                $("#prepare-button").click(function() {
+
+                    // Get left contender forms ids
+                    var leftContenderForms = [];
+                    $('#leftContenderClosedForms').find('.form.active').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        leftContenderForms.push(formId);
+                    });
+
+                    // Get right contender forms ids
+                    var rightContenderForms = [];
+                    $('#rightContenderClosedForms').find('.form.active').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        rightContenderForms.push(formId);
+                    });
+
+                    // Get start animation switch value
+                    var useStartAnimation = true;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/prepareFight',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "useAnimation" : useStartAnimation,
+                            "contenders" : {
+                                "left" : {
+                                    "name" : $('#leftContenderName').val(),
+                                    "school" : $('#leftContenderSchool').val(),
+                                    "forms" : leftContenderForms
+                                },
+                                "right" : {
+                                    "name" : $('#rightContenderName').val(),
+                                    "school" : $('#rightContenderSchool').val(),
+                                    "forms" : rightContenderForms
+                                }
+                            },
+                            "time" : $('#timeoutInput').val(),
+                            "assaults" : $('#assaultsInput').val(),
+                            "phase" : $('#phaseInput').val(),
+                            "arena" : "MASTER"
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#timer-control-button').click(function(){
+
+                    // Change button appearance with animation
+                    var tl = new TimelineMax();
+                    var label = $('.collapse-label');
+                    var isClosing = true;
+                    tl.to(label,  0.8, {width: "0px", ease: Power2.easeIn, onComplete: () => {
+                            if(isTimerPaused) {
+                                label.text(" Stop Timer");
+                            } else {
+                                label.text(" Start Timer");
+                            }
+                            isTimerPaused = ! isTimerPaused;
+                        }
+                    });
+                    TweenMax.delayedCall(0.8, function(){
+                       tl.reverse();
+                    });
+
+                    // Send message
+                    if(isTimerPaused) {
+                        $.ajax({
+                            url: '/startFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : "MASTER"
+                            }),
+                            success: function() {
+                                startTimer();
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: '/pauseFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : "MASTER"
+                            }),
+                            success: function() {
+                                stopTimer();
+                            }
+                        });
+                    }
+                });
+
+                // Manage the "finish" button action
+                $("#finish-button").click(function() {
+
+                    // Get end animation switch value
+                    var useEndAnimation = true;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/finishFight',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "useAnimation" : useEndAnimation,
+                            "arena" : "MASTER"
+                        })
+                    });
+                });
+
+                // Manage the "update" button action
+                $("#update-button").click(function() {
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/getMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER"
+                        })
+                    });
+                });
+
+                $("#plus-left-button").click(function() {
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#leftContenderScore').text()) + 1;
+                    $('#leftContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#plus-right-button").click(function() {
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#rightContenderScore').text()) + 1;
+                    $('#rightContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#minus-left-button").click(function() {
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#leftContenderScore').text()) - 1;
+                    $('#leftContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#minus-right-button").click(function() {
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#rightContenderScore').text()) - 1;
+                    $('#rightContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#doppio-button").click(function() {
+
+                    // Update assaults
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#restore-button").click(function() {
+
+                    // Update assaults
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : "MASTER",
+                            "match" : {
+                                consumed : $('#consumed').text(),
+                                firstContender : {
+                                    score : $('#leftContenderScore').text()
+                                },
+                                secondContender : {
+                                    score : $('#rightContenderScore').text()
+                                }
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

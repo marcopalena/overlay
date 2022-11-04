@@ -1,0 +1,1101 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/standings.css">
+        <link rel="stylesheet" href="css/jquery.bracket.min.css">
+        <style>
+
+        .tournament-logo {
+            position: absolute;
+            z-index: 10;
+        }
+
+        div.jQBracket .bracket {
+            float: none;
+        }
+
+        div.jQBracket .team {
+            display: flex;
+            flex-wrap: nowrap;
+            min-height: 30px;
+            background-color: #333333;
+        }
+
+        div.jQBracket .team.na {
+            background-color: #333333;
+        }
+
+        div.jQBracket .team.na .label-text {
+            color: #ccc
+        }
+
+        div.jQBracket .team div.label {
+            background:#333333;
+            position: relative;
+            height: 30px;
+            padding: 0px;
+        }
+
+        div.jQBracket .team div.spacer {
+            height: 30px;
+            position: absolute;
+            width: 0px;
+        }
+
+        div.jQBracket .team div.spacer.up {
+            background: linear-gradient(to top, #333333 50%, #F39400 50%);
+            background-size: 100% 200%;
+            background-position: right top;
+            top: 0px;
+        }
+
+        div.jQBracket .team div.spacer.down {
+            background: linear-gradient(to bottom, #333333 50%, #F39400 50%);
+            background-size: 100% 200%;
+            background-position: right bottom;
+            bottom: 0px;
+        }
+
+        /*  WIN */
+        div.jQBracket .team.win div.seed {
+            color: white;
+        }
+
+        div.jQBracket .team.win div.label {
+            color: white;
+        }
+
+        div.jQBracket .team.win div.score {
+            color: white;
+        }
+
+        div.jQBracket .team.win div.style-res {
+            color: white;
+        }
+
+        div.jQBracket .connector {
+            border: none;
+        }
+
+        div.jQBracket .connector div.connector {
+            border: none;
+        }
+
+        div.jQBracket .connector .tb{
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            background: linear-gradient(to left, #666 50%, #F39400 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+
+        div.jQBracket .connector .rb{
+            width: 2px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to top, #666 50%, #F39400 50%);
+            background-size: 100% 200%;
+            background-position: right bottom;
+        }
+
+        div.jQBracket .connector .bb{
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            background: linear-gradient(to left, #666 50%, #F39400 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+
+        /*  LOSE */
+
+        div.jQBracket .team.lose {
+            background-color: #333;
+        }
+
+        div.jQBracket .team.lose div.seed {
+            color: white;
+        }
+
+        div.jQBracket .team.lose div.label {
+            background: linear-gradient(to right, #333333 50%, #444 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+            color: white;
+        }
+
+        div.jQBracket .team.lose div.score {
+            background: linear-gradient(to right, #666 50%, #444 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+            color: white;
+        }
+
+        div.jQBracket .team.lose div.style-res {
+            background: linear-gradient(to right, #666 50%, #444 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+            color: white;
+        }
+
+
+
+
+        div.jQBracket .team div.label-text {
+            padding: 3px;
+            padding-left: 5px;
+            background-color: #333333;
+            position: relative;
+            height: 26px;
+        }
+
+        div.jQBracket .team div.style-res {
+            padding: 5px;
+            min-width: 50px;
+            height: 30px;
+            text-align: center;
+            background: #666;
+            border-left: 1px solid #999;
+        }
+
+        div.jQBracket .team div.seed {
+            padding: 5px;
+            height: 30px;
+            background-color: #444;
+            flex-shrink: 0;
+            border-right: 1px solid #999;
+            width: 50px;
+            text-align: center;
+        }
+
+        div.jQBracket .team.highlight {
+
+        }
+
+        div.jQBracket .team div.score {
+            padding: 5px;
+            min-width: 30px;
+            height: 30px;
+            text-align: center;
+            background: #666;
+            border-left: 1px solid #999;
+        }
+
+
+        div.jQBracket .team div.score .score-text{
+
+        }
+
+
+        div.jQBracket .teamContainer {
+            min-height: 61px;
+        }
+
+        div.jQBracket .team:first-child {
+            border-bottom: 1px solid #999;
+            min-height: 31px;
+        }
+
+        div.jQBracket .style-label {
+            position: absolute;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: normal;
+            top: -20px;
+            right: 40px;
+            color: #999;
+        }
+
+        div.jQBracket .score-label {
+            position: absolute;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: normal;
+            top: -20px;
+            right: 0px;
+            color: #999;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="bracket" style="font-size: 13px; color: black;">
+
+		</div>
+		<script src="head.min.js"></script>
+		<script src="reveal.js"></script>
+		<script src="jquery-3.3.1.min.js"></script>
+        <script src="TweenMax.min.js"></script>
+        <script src="moment.js"></script>
+        <script src="jquery.countdown.js"></script>
+        <script src="popper.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="jquery.bracket.js"></script>
+        <script src="bracketData.js"></script>
+        <script>
+
+        /*****************************************************************************************************************************
+                                                          UTILITY FUNCTIONS
+        *****************************************************************************************************************************/
+
+        function nearestPow2(n){
+            return Math.pow(2, Math.round(Math.log(n) / Math.log(2)));
+        }
+
+        function nearestLog2(n){
+            return Math.log(nearestPow2(n)) / Math.log(2);
+        }
+
+        function generateEmptyResults(pairings) {
+
+            // Compute number ofrounds
+            var rounds = Math.log(pairings.length) / Math.log(2) + 1;
+
+            // Generate empty results
+            let emptyResults = [];
+            for(let i=0; i<rounds; i++) {
+                let emptyRoundResults = [];
+                let matches = Math.pow(2, rounds-i-1);
+                for(let j=0;j<matches; j++) {
+                    //emptyRoundResults.push([]);
+                    emptyRoundResults.push([null, null]);
+                }
+                emptyResults.push(emptyRoundResults);
+            }
+
+            // Return empty results
+            return emptyResults;
+        }
+
+        /*****************************************************************************************************************************
+                                                          PAGE INITIALIZATION
+        *****************************************************************************************************************************/
+
+        $(document).ready(function() {
+
+            // Globals
+            var roundNames = [
+                "Finali",
+                "Semifinali",
+                "Quarti",
+                "Ottavi",
+                "Sedicesimi",
+                "Trentaduesimi"
+            ];
+            var bracketData = {
+                teams : [],
+                results: resultsData
+            }
+            var paddingTopBottom = 30;
+            var initialBracketBox = null;
+            var hasBracket = false;
+            var initialScale = 1;
+            var currentScale = 1;
+            var bracketTimeline = new TimelineMax();
+            var nRounds = 0;
+
+            // Connect to server through a web socket
+            var socket = new WebSocket('ws://localhost:3000/registerBracket');
+
+            // Set web socket message callback
+            socket.onmessage = async function(e) {
+
+                // Get message data
+                var json = JSON.parse(e.data);
+                var message = json['message'];
+                var data = json['data'];
+
+                // Handle update messages
+                switch(message) {
+
+                    case "initializeBracket":
+
+                        // Get pairings
+                        //var pairings = pairingsData16;
+                        var pairings = data["pairings"];
+
+                        // Initialize bracket data
+                        bracketData.teams = pairings;
+                        //bracketData.results = resultsData;
+                        bracketData.results = generateEmptyResults(pairings);
+
+                        // Initialize bracket
+                        $('#bracket').bracket({
+                            teamWidth: 350,
+                            matchMargin: 40,
+                            init: bracketData,
+                            disableHighlight: true,
+                            decorator: {edit: function(){}, render: renderAthlete, score: renderScore, scoreDiff: scoreDiff, nameDiff: nameDiff, updateTeam: updateAthlete, updateResults: updateResults}
+                        });
+
+
+                        // Compute scale factor
+                        nRounds = nearestLog2(pairings.length*2);
+                        var bracketBox = getBracketBox(nRounds);
+                        var documentBox = getDocumentBox();
+                        var scaleY = (documentBox.height - paddingTopBottom)/bracketBox.height;
+                        var scaleX = (documentBox.width - 2*paddingTopBottom)/bracketBox.width;
+                        initialScale = Math.min(scaleY, scaleX);
+
+
+                        // Scale bracket to fit document window
+                        TweenMax.set($('#bracket .jQBracket'), {transformOrigin:"0% 0%"});
+                        TweenMax.set($('#bracket .jQBracket'), {scale: initialScale});
+                        currentScale = initialScale;
+                        initialBracketBox = getBracketBox(nRounds);
+                        hasBracket = true;
+
+                        // Center the bracket
+                        TweenMax.set($('#bracket .jQBracket'), {x: documentBox.width/2 - initialBracketBox.width/2, y: documentBox.height/2 - initialBracketBox.height/2});
+                        initialBracketBox.left = documentBox.width/2 - initialBracketBox.width/2;
+                        initialBracketBox.top = documentBox.height/2 - initialBracketBox.height/2;
+
+
+                        // Add logo
+                        var logo = $('<img class="tournament-logo" src="imgs/logo_torneo_ordine.svg">');
+                        var lastRoundBox = getRoundBox(nRounds-1);
+                        var hSpace = documentBox.width - lastRoundBox.left;
+                        var vSpace = lastRoundBox.top - paddingTopBottom;
+                        $('#bracket .jQBracket').prepend(logo);
+                        var waitForEl = function(selector, callback) {
+                          if (jQuery(selector).get(0).getBoundingClientRect().width !== 0) {
+                            callback();
+                          } else {
+                            setTimeout(function() {
+                              waitForEl(selector, callback);
+                            }, 100);
+                          }
+                        };
+                        waitForEl('.tournament-logo', function() {
+                            var tournamentLogo = $('.tournament-logo');
+                            var logoBox = tournamentLogo.get(0).getBoundingClientRect();
+                            TweenMax.set(tournamentLogo, {x: "+=" + (lastRoundBox.left + hSpace/2 - logoBox.left - logoBox.width/2)/currentScale, y: vSpace*0.05/currentScale, transformOrigin: "0% 0%"});
+                            var logoScaleX = (hSpace - hSpace*0.1)/logoBox.width;
+                            var logoScaleY = (vSpace - vSpace*0.1)/logoBox.height;
+                            var logoScale = Math.min(logoScaleY, logoScaleX);
+                            TweenMax.set(tournamentLogo, {scale: logoScale, transformOrigin: "50% 10%"});
+                            TweenMax.fromTo(tournamentLogo, 2, {autoAlpha: 0}, {autoAlpha: 1});
+                        });
+
+                        //
+                        //await wait(5);
+                        //simulateTournament(nRounds)
+                        /*await zoomInAndScrollRound(0, 6);
+                        await zoomOut();
+                        await zoomInAndScrollRound(1, 6);
+                        await zoomOut();
+                        await zoomInAndScrollRound(2, 6);
+                        await zoomOut();
+                        await zoomInAndScrollRound(3, 6);
+                        await zoomOut();
+                        await zoomInAndScrollRound(4, 6);
+                        await zoomOut();
+                        await zoomInAndScrollRound(5, 6);
+                        await zoomOut();*/
+                        /*$('.team').click(function() {
+                            var container = $(this).parent();
+                            var team = container.find('.team').eq(0);
+                            var opponent = container.find('.team').eq(1);
+
+                            var label = team.find('.label');
+                            var style = team.find('.style-res');
+                            var styleText = style.find('.style-text');
+                            var score = team.find('.score');
+                            var scoreText = score.find('.score-text');
+                            var oppLabel = opponent.find('.label');
+                            var oppStyle = opponent.find('.style-res');
+                            var oppStyleText = oppStyle.find('.style-text');
+                            var oppScore = opponent.find('.score');
+                            var oppScoreText = oppScore.find('.score-text');
+
+
+                            var tl = new TimelineMax();
+                            tl.to([styleText, scoreText, oppStyleText, oppScoreText, label, oppLabel], 1, {opacity: 0, onComplete: function() {
+                                team.addClass("win");
+                                opponent.addClass("lose");
+                            }})
+                            .to([styleText, scoreText, oppStyleText, oppScoreText, label, oppLabel], 1, {opacity: 1})
+                            .to(label, 0.4, {backgroundPosition: "left bottom"})
+                            .to(style, 0.1, {backgroundPosition: "left bottom"})
+                            .to(score, 0.1, {backgroundPosition: "left bottom"})
+                            .to(opponent, 0.5, {opacity: 0.5});
+                        });*/
+
+                        break;
+
+                    case "focusOnRound":
+
+                        // Get parameters
+                        var round =  data["round"];
+
+                        // Sanity check: bracket initialized
+                        if(!hasBracket) return;
+
+                        // Zoom and scroll round
+                        await zoomInAndScrollRound(round, nRounds);
+                        await wait(1);
+                        await zoomOut();
+                        await wait(1);
+                        break;
+
+                    case "focusOnMatch":
+
+                        // Get parameters
+                        var match =  data["match"];
+                        var round =  data["round"];
+                        var bracketResults =  data["bracketResults"];
+
+                        // Sanity check: bracket initialized
+                        if(!hasBracket) return;
+
+                        await zoomInMatch(match, round, nRounds);
+                        await focusOnMatch(match, round, nRounds);
+                        await wait(2);
+                        console.log("Update generate for match " + match + " of round " + round);
+                        bracketData.results = bracketResults;
+                        $('#bracket').bracket('update', bracketData.results, {round: round, match: match});
+                        await wait(5);
+                        await resetFocus();
+                        await zoomOut();
+                        await wait(1);
+
+                        // await zoomInMatch(match, round, nRounds);
+                        // await wait(6);
+                        // await zoomOut();
+                        break;
+
+                    case "updateRound":
+                        var round =  data["round"];
+                        var roundResults =  data["roundResults"];
+                        bracketData.results[round] = roundResults;
+                        console.log(bracketData);
+                        $('#bracket').bracket('update', bracketData.results);
+                        break;
+
+                    case "updateBracket":
+                        var bracketResults =  data["bracketResults"];
+                        bracketData.results = bracketResults;
+                        console.log(bracketData);
+                        $('#bracket').bracket('update', bracketData.results);
+                        break;
+                }
+            }
+
+            //$('#bracket').bracket('update', updatedResults);
+            //focusOnRound(0, 6);
+            //focusOnMatch(11, 1, 6);
+
+
+            function shuffle(a) {
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
+                }
+                return a;
+            }
+
+            async function simulateTournament(nRounds) {
+
+                // Initialize locals
+                var currentMatch = 0;
+                var currentRound = 0;
+                var matchesPerRound = Math.pow(2, nRounds-currentRound-1);
+                var matches = [...Array(matchesPerRound).keys()];
+                shuffle(matches)
+
+                // Update results at fixed rate
+                var count = 0;
+                while(true) {
+                    if(count >= matchesPerRound) {
+                        await zoomInAndScrollRound(currentRound, nRounds);
+                        await wait(1);
+                        await zoomOut();
+                        await wait(1);
+                        currentRound++;
+                        if(currentRound >= nRounds)  {
+                            return;
+                        }
+                        matchesPerRound = Math.pow(2, nRounds-currentRound-1);
+                        matches = [...Array(matchesPerRound).keys()]
+                        shuffle(matches)
+                        count = 0;
+                    }
+                    currentMatch = matches[count++];
+                    let firstScore = Math.floor(Math.random() * (3));
+                    let secondScore = 3-firstScore;
+                    var firstStyle = Math.floor(Math.random() * (8 - 4) + 4);
+                    var secondStyle = Math.floor(Math.random() * (8 - 4) + 4);
+                    bracketData.results[currentRound][currentMatch] = [{ score: '' + firstScore, style: '' +  firstStyle.toFixed(2)}, { score: '' + secondScore, style: '' +  secondStyle.toFixed(2)}];
+
+                    await zoomInMatch(currentMatch, currentRound, nRounds);
+                    await focusOnMatch(currentMatch, currentRound, nRounds);
+                    await wait(2);
+                    console.log("Update generate for match " + currentMatch + " of round " + currentRound);
+                    $('#bracket').bracket('update', bracketData.results, {round: currentRound, match: currentMatch});
+                    await wait(5);
+                    await resetFocus();
+                    await zoomOut();
+                    await wait(1);
+                }
+            }
+
+            /*****************************************************************************************************************************
+                                                                BRACKET RENDERING
+            *****************************************************************************************************************************/
+
+            function scoreDiff(a, b) {
+                if((a === null && b !== null) || (a !== null && b === null)) return true;
+                if(a === null && b === null) return false;
+                return a.score !== b.score || a.style !== b.style;
+            }
+
+            function nameDiff(a, b) {
+                if((a === null && b !== null) || (a !== null && b === null)) return true;
+                if(a === null && b === null) return false;
+                return a.seed !== b.seed || a.name !== b.name;
+            }
+
+            function updateResults(targetTeamA, replacementTeamA, targetTeamB, replacementTeamB, roundNumber, matchNumber) {
+
+                // Get winning and losing team
+                var winningTeam, losingTeam;
+                var isWinnerFirst = false;
+                if(replacementTeamA.hasClass("win")) {
+                    winningTeam = targetTeamA;
+                    winningReplacementTeam = replacementTeamA;
+                    losingTeam = targetTeamB;
+                    losingReplacementTeam = replacementTeamB;
+                    isWinnerFirst = true;
+                } else {
+                    winningTeam = targetTeamB;
+                    winningReplacementTeam = replacementTeamB;
+                    losingTeam = targetTeamA;
+                    losingReplacementTeam = replacementTeamA;
+                }
+
+                // Get winning team components
+                var winningLabel = winningTeam.find('.label');
+                var winningStyle = winningTeam.find('.style-res');
+                var winningScore = winningTeam.find('.score');
+                var winningStyleText = winningStyle.find('.style-text');
+                var winningScoreText = winningScore.find('.score-text');
+
+                // Get losing team components
+                var losingLabel = losingTeam.find('.label');
+                var losingStyle = losingTeam.find('.style-res');
+                var losingScore = losingTeam.find('.score');
+                var losingStyleText = losingStyle.find('.style-text');
+                var losingScoreText = losingScore.find('.score-text');
+
+                // Get connector components
+                var container = targetTeamA.parent();
+                var connectorSrc = container.find('.connector').eq(0);
+                var connectorDst = container.find('.connector').eq(1);
+                var comp1 = connectorSrc.find('.tb');
+                var comp2 = connectorSrc.find('.rb');
+                var comp3 = connectorSrc.find('.bb');
+                if(matchNumber % 2 != 0) {
+                    comp2.css('background', 'linear-gradient(to bottom, #666 50%, #F39400 50%)');
+                    comp2.css('background-size', '100% 200%');
+                    comp2.css('background-position', 'right top');
+                }
+
+                // Hide current results
+                var tl = new TimelineMax();
+                tl.to([winningStyleText, winningScoreText, losingStyleText, losingScoreText], 0.5, {autoAlpha: 0, onComplete: function() {
+
+                    // Update the results
+                    winningStyleText.text(winningReplacementTeam.find('.style-text').text());
+                    winningScoreText.text(winningReplacementTeam.find('.score-text').text());
+                    winningTeam.addClass("win");
+                    losingStyleText.text(losingReplacementTeam.find('.style-text').text());
+                    losingScoreText.text(losingReplacementTeam.find('.score-text').text());
+                    losingTeam.addClass("lose");
+
+                    // Show results back again
+                    tl.to([winningStyleText, winningScoreText, losingStyleText, losingScoreText], 0.5, {autoAlpha: 1,  onComplete: function() {
+
+                        // Change size of labels
+                        TweenMax.to(winningLabel.find('.label-text text'), 0.6, {scale: 1.1, transformOrigin: "0% 100%", delay: 0.2});
+                        TweenMax.to(losingLabel.find('.label-text text'), 0.6, {scale: 0.9, transformOrigin: "0% 100%", delay: 0.2});
+
+                        // Set label background
+                        winningLabel.css('background', 'linear-gradient(to left, #333333 50%, #F39400 50%)');
+                        winningLabel.css('background-size', '200% 100%');
+                        winningLabel.css('background-position', 'right bottom');
+
+                        // Highlight winner
+                        if(roundNumber > 0) {
+                            var target = winningTeam.parent().find(".spacer");
+                            tl.to(target, 0.1, {backgroundPosition: !isWinnerFirst ? "right top" : "right bottom", delay: 0.1})
+                            .to(winningLabel, 0.3, {backgroundPosition: "left bottom", onComplete: function() {
+
+                                // Set style background
+                                winningStyle.css('background', 'linear-gradient(to left, #999999 50%, #F39400 50%)');
+                                winningStyle.css('background-size', '200% 100%');
+                                winningStyle.css('background-position', 'right bottom');
+                                tl.to(winningStyle, 0.1, {backgroundPosition: "left bottom", onComplete : function() {
+
+                                    // Set score background
+                                    winningScore.css('background', 'linear-gradient(to left, #999999 50%, #F39400 50%)');
+                                    winningScore.css('background-size', '200% 100%');
+                                    winningScore.css('background-position', 'right bottom');
+                                    tl.to(winningScore, 0.1, {backgroundPosition: "left bottom"})
+                                    .to(comp1, 0.1, {backgroundPosition: "left bottom"})
+                                    .to(comp2, 0.12*Math.pow(2, roundNumber), {backgroundPosition: matchNumber % 2 != 0 ? "left bottom" : "left top"})
+                                    .to(comp3, 0.1, {backgroundPosition: "left bottom"});
+                                }})
+                            }})
+
+                            // Turn off prev loser match
+                            var prevRoundNumber = roundNumber - 1;
+                            var currentMatchNumber = matchNumber;
+                            var loserTeamOffset = (isWinnerFirst ? 1 : 0);
+                            var currentDelay = 0;
+                            while(prevRoundNumber >= 0) {
+                                var prevLoserMatchNumber = 2*currentMatchNumber + loserTeamOffset;
+                                var prevRound = $('.round[data-number="' + (prevRoundNumber) + '"]');
+                                var prevLoserMatch = prevRound.find('.match').eq(prevLoserMatchNumber);
+                                var prevLoserMatchCon = prevLoserMatch.find('.teamContainer');
+                                var prevConnectorSrc = prevLoserMatchCon.find('.connector').eq(0);
+                                var prevSpacer = prevLoserMatchCon.find(".spacer");
+                                var prevComp1 = prevConnectorSrc.find('.tb');
+                                var prevComp2 = prevConnectorSrc.find('.rb');
+                                var prevComp3 = prevConnectorSrc.find('.bb');
+                                var prevWinnerTeam = prevLoserMatch.find('.team.win');
+                                var prevWinnerLabel = prevWinnerTeam.find('.label');
+                                var prevWinnerStyle = prevWinnerTeam.find('.style-res');
+                                var prevWinnerStyleText = prevWinnerStyle.find('.style-text');
+                                var prevWinnerScore = prevWinnerTeam.find('.score');
+                                var prevWinnerScoreText = prevWinnerScore.find('.score-text');
+                                var tl3 = new TimelineMax();
+
+                                if(prevRoundNumber == roundNumber - 1){
+                                    currentDelay += 0.1;
+                                }
+                                if(prevRoundNumber > 0) {
+                                    tl3.to(prevSpacer, 0.1, {width: 0});
+                                    currentDelay += 0.1;
+                                }
+                                tl3.to(prevComp3, 0.1, {backgroundPosition: "right top", delay: currentDelay})
+                                .to(prevComp2, 0.12*Math.pow(2, prevRoundNumber), {backgroundPosition: prevLoserMatchNumber % 2 != 0 ? "left top" : "left bottom"})
+                                .to(prevComp1, 0.1, {backgroundPosition: "right top"})
+                                .to(prevWinnerScore, 0.1, {backgroundPosition: "right bottom", onComplete: function() {
+                                    this.target.css('background', '#666666');
+                                }})
+                                .to(prevWinnerStyle, 0.1, {backgroundPosition: "right bottom", onComplete: function() {
+                                    this.target.css('background', '#666666');
+                                }})
+                                .to(prevWinnerLabel, 0.4, {backgroundPosition: "right bottom", onComplete: function() {
+                                    this.target.css('background', '#333333');
+                                }})
+                                //.to(prevWinnerLabel.find('.label-text text'), 0.6, {strokeWidth: 0.1, stroke: '#ffffff'})
+                                .to([prevWinnerLabel, prevWinnerStyleText, prevWinnerScoreText], 0.5, {autoAlpha: 0.5});
+                                currentMatchNumber = prevLoserMatchNumber;
+                                prevRoundNumber = prevRoundNumber - 1;
+                                loserTeamOffset = 1;
+                                if(prevLoserMatch.find('.team').eq(0).hasClass('win')) loserTeamOffset = 0;
+                                currentDelay += 0.1 + 0.12*Math.pow(2, prevRoundNumber) + 0.1 + 0.1 + 0.1 + 0.4;
+                            }
+                        } else {
+                            tl.to(winningLabel, 0.4, {backgroundPosition: "left bottom", onComplete: function() {
+                                // Set style background
+                                winningStyle.css('background', 'linear-gradient(to left, #999999 50%, #F39400 50%)');
+                                winningStyle.css('background-size', '200% 100%');
+                                winningStyle.css('background-position', 'right bottom');
+                                tl.to(winningStyle, 0.1, {backgroundPosition: "left bottom", onComplete: function() {
+                                    // Set score background
+                                    winningScore.css('background', 'linear-gradient(to left, #999999 50%, #F39400 50%)');
+                                    winningScore.css('background-size', '200% 100%');
+                                    winningScore.css('background-position', 'right bottom');
+                                    tl.to(winningScore, 0.1, {backgroundPosition: "left bottom"})
+                                    .to(comp1, 0.1, {backgroundPosition: "left bottom"})
+                                    .to(comp2, 0.12*Math.pow(2, roundNumber), {backgroundPosition: matchNumber % 2 != 0 ? "left bottom" : "left top"})
+                                    .to(comp3, 0.1, {backgroundPosition: "left bottom"});
+                                }})
+                            }})
+                        }
+                    }})
+                }})
+
+                // Partially hide loser information
+                var tl2 = new TimelineMax();
+                tl2.to([losingLabel, losingStyleText, losingScoreText], 0.5, {autoAlpha: 0.5, delay: 2});
+
+            }
+
+
+            function updateAthlete(targetTeam, replacementTeam, roundNumber) {
+
+                // Make "Upcoming" label disappear
+                var targetLabel = targetTeam.find('.label-text');
+                var targetLabelText = targetTeam.find('.label-text text');
+                var targetSeed = targetTeam.find('.seed');
+
+
+                console.log(`Replacing ${targetTeam.find('.label-text text').text()} with ${replacementTeam.find('.label-text text').text()}`);
+
+                var tl = new TimelineMax();
+                tl.to(targetLabelText, 0.3, {autoAlpha: 0, x : "-=50px", delay: 1.2+0.12*Math.pow(2, roundNumber-1), onComplete : function() {
+
+                    // Replace class of target team element
+                    targetTeam.attr('class', replacementTeam.attr('class'));
+
+                    // Get content of replacement team and set it to hidden
+                    var replacementLabelText = replacementTeam.find('.label-text text');
+                    var replacementSeed = replacementTeam.find('.seed');
+
+                    // Replace content of target team
+                    if(roundNumber == 0) targetSeed.html(replacementSeed.html());
+                    targetLabelText.html(replacementLabelText.html());
+                    targetLabelText.css('font-style', replacementLabelText.css('font-style'));
+                    targetLabelText.css('stroke', replacementLabelText.css('stroke'));
+                    targetLabelText.css('fill', replacementLabelText.css('fill'));
+                    var spacer = targetTeam.find('.spacer');
+
+                    //tl.set(targetTeam.find('.label-text'), {x : "-=50px"});
+
+                    tl.to(spacer, 0.1, {width: 4, delay: 0.9})
+                    .to(targetLabelText, 0.3, {autoAlpha: 1, x : "+=50px"});
+                }})
+
+            }
+
+            function renderAthlete(container, data, score, state, firstTeam, roundNumber) {
+                switch(state) {
+                    case "empty-bye":
+                        var team = container.parent();
+                        team.append((roundNumber > 0 ? '<div class="spacer ' + (firstTeam ? 'down' : "up") + '"></div>' : ''));
+                        container.append('<svg class="label-text" style="background-color: #333333; height: 90%; width: 100%; padding-left: 10px;"><text style="font-size: 14px; font-style: italic; line-height: 100%;fill:#aaaaaa;fill-opacity:1;stroke:#aaaaaa;stroke-width:0.1px;" y="20" x="5" text-anchor="start">' + 'BYE' +'</text></svg>');;
+                        team.append('<div class="style-res"><div class="style-text">--</div>' +(firstTeam ? '<div class="style-label">Style</div><div class="score-label">Score</div>' : '') + '</div>');
+                        return;
+                    case "empty-tbd":
+                        var team = container.parent();
+                        team.append((roundNumber > 0 ? '<div class="spacer ' + (firstTeam ? 'down' : "up") + '"></div>' : ''));
+                        container.append('<svg class="label-text" style="background-color: #333333; height: 90%; width: 100%; padding-left: 10px;"><text style="font-size: 14px; font-style: italic; line-height: 100%;fill:#aaaaaa;fill-opacity:1;stroke:#aaaaaa;stroke-width:0.1px;" y="20" x="5" text-anchor="start">' + 'Upcoming' +'</text></svg>');
+                        team.append('<div class="style-res"><div class="style-text">--</div>' +(firstTeam ? '<div class="style-label">Style</div><div class="score-label">Score</div>' : '') + '</div>');
+                        return;
+                    case "entry-no-score":
+                    case "entry-default-win":
+                    case "entry-complete":
+
+                        // Get team container
+                        var team = container.parent();
+                        team.append((roundNumber > 0 ? '<div class="spacer ' + (firstTeam ? 'down' : "up") + '"></div>' : ''));
+
+                        // If no previous state is given just render the data
+                        if(roundNumber == 0) team.prepend('<div class="seed">'+data.seed+'</div>');
+                        team.css("text-align", "left");
+                        container.append('<svg class="label-text" style="background-color: #333333; height: 90%; width: 100%; ' + (roundNumber > 0 ? 'padding-left: 10px;' : 'padding-left: 10px;') + '"><text style="font-size: 14px; line-height: 100%;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.1px;" y="20" x="5" text-anchor="start">' + data.name +'</text></svg>');
+
+                        // Render style point
+                        var style = (score.style === undefined) ? "--" : score.style;
+                        team.append('<div class="style-res"><div class="style-text">'+style+'</div>' +(firstTeam ? '<div class="style-label">Style</div><div class="score-label">Score</div>' : '') + '</div>');
+                        return;
+                }
+            }
+
+            function edit_fn(container, data, doneCb) {
+
+            }
+
+            function renderScore(container, score) {
+                if(typeof score === "string") {
+                    container.append('<div class="score-text">'+score+'</div>');
+                } else if(typeof score === "object") {
+                    container.append('<div class="score-text">'+score.score+'</div>')
+                }
+            }
+
+            /*****************************************************************************************************************************
+                                                                      ANIMATIONS
+            *****************************************************************************************************************************/
+
+            // Returns the bounding box of the entire bracket
+            function getBracketBox(n) {
+                var firstRound = $('.round[data-number="0"]');
+                var lastRound = $('.round[data-number="' + (n-1) + '"]');
+                var xBracketStart = firstRound.offset().left;
+                var xBracketEnd = lastRound.offset().left + lastRound.get(0).getBoundingClientRect().width;
+                var yBracketStart = firstRound.offset().top;
+                var yBracketEnd = yBracketStart + firstRound.get(0).getBoundingClientRect().height;
+                var bracketWidth = xBracketEnd-xBracketStart;
+                var bracketHeight = yBracketEnd-yBracketStart;
+                return {
+                    top: yBracketStart,
+                    left: yBracketStart,
+                    width: bracketWidth,
+                    height: bracketHeight
+                }
+            }
+
+            // Returns the bounding box of a given round
+            function getRoundBox(i) {
+                var round = $('.round[data-number="' + i + '"]');
+                var firstMatch = round.find('.match .teamContainer').first();
+                var lastMatch = round.find('.match .teamContainer').last();
+                var yRoundStart = firstMatch.offset().top;
+                var yRoundEnd = lastMatch.get(0).getBoundingClientRect().top + lastMatch.get(0).getBoundingClientRect().height;
+                var xRoundStart = round.offset().left;
+                var xRoundEnd = xRoundStart + round.get(0).getBoundingClientRect().width;
+                var roundWidth = xRoundEnd - xRoundStart;
+                var roundHeight = yRoundEnd - yRoundStart;
+                return {
+                    top: yRoundStart,
+                    left: xRoundStart,
+                    width: roundWidth,
+                    height: roundHeight
+                }
+            }
+
+            // Returns the bounding box of a given match
+            function getMatchBox(i, round) {
+                var round = $('.round[data-number="' + round + '"]');
+                var match = round.find('.match .teamContainer').eq(i);
+                var yMatchStart = match.offset().top;
+                var yMatchEnd = match.get(0).getBoundingClientRect().top + match.get(0).getBoundingClientRect().height;
+                var xMatchStart = match.offset().left;
+                var xMatchEnd = xMatchStart + match.get(0).getBoundingClientRect().width;
+                var matchWidth = xMatchEnd - xMatchStart;
+                var matchHeight = yMatchEnd - yMatchStart;
+                return {
+                    top: yMatchStart,
+                    left: xMatchStart,
+                    width: matchWidth,
+                    height: matchHeight
+                }
+            }
+
+            // Returns the bounding box of the document window
+            function getDocumentBox() {
+                var width = jQuery(window).width();
+                var height = jQuery(window).height();
+                return {
+                    width,
+                    height
+                }
+            }
+
+            // Zooms to the start of a given round, scrolls down to show the whole list of matches in the round if its height
+            // overflows the current screen, then zooms out to the starting scale
+            function zoomInAndScrollRound(i, rounds) {
+
+                // Compute round info
+                let athletes = Math.pow(2, rounds-i);
+                let matches = athletes/2;
+
+                // Safety check: valid round index
+                if(i >= rounds) return;
+
+                // Get round and document boxes
+                let roundBox = getRoundBox(i);
+                let documentBox = getDocumentBox();
+
+                // Settings
+                let minReadTime = 6;
+                let secPerAthlete = 0.8;
+
+                // Compute target scale (round length to 30% of screen width)
+                var targetScale = 0.3*documentBox.width*currentScale/roundBox.width;
+
+                // Compose animations
+                let zoomingAnimation, scrollingAnimation, restoringAnimation;
+                if(roundBox.height*targetScale/currentScale < (documentBox.height - paddingTopBottom)) {
+
+                    // If round fits the document window just show it in the center
+                    zoomingAnimation = {
+                        x: documentBox.width/2 - (roundBox.left -  initialBracketBox.left)*targetScale/currentScale - roundBox.width*targetScale/(2*currentScale),
+                        y: (documentBox.height - roundBox.height*targetScale/currentScale)/2 -(roundBox.top -  initialBracketBox.top)*targetScale/currentScale,
+                        scale: targetScale,
+                        ease: ExpoScaleEase.config(currentScale, targetScale, Power2.easeOut),
+                        delay: 1
+                    };
+                    scrollingAnimation = {};
+                } else {
+
+                    // If round overflows the document window start from the top of the round and scroll down to the bottom
+                    zoomingAnimation = {
+                        x: documentBox.width/2 - (roundBox.left -  initialBracketBox.left)*targetScale/currentScale - roundBox.width*targetScale/(2*currentScale),
+                        y: -(roundBox.top -  initialBracketBox.top)*targetScale/currentScale + paddingTopBottom,
+                        scale: targetScale,
+                        ease: ExpoScaleEase.config(currentScale, targetScale, Power2.easeOut),
+                        delay: 1
+                    };
+                    scrollingAnimation = {
+                        y : "-=" + ((initialBracketBox.height*targetScale/currentScale - documentBox.height + paddingTopBottom))
+                    };
+                }
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to($('#bracket .jQBracket'), 1, zoomingAnimation)
+                  .to($('#bracket .jQBracket'), Math.max(secPerAthlete*athletes, minReadTime), scrollingAnimation);
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        currentScale = targetScale;
+                        resolve(true)
+                    })
+                });
+            }
+
+            function wait(secs) {
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to($('#bracket'), secs, {});
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        resolve(true)
+                    })
+                });
+            }
+
+            function zoomOut() {
+
+                // Compose animations
+                var restoringAnimation = {
+                    x: initialBracketBox.left,
+                    y: initialBracketBox.top,
+                    scale: initialScale,
+                    ease: ExpoScaleEase.config(currentScale, initialScale, Power2.easeOut)
+                }
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to($('#bracket .jQBracket'), 0.5, restoringAnimation);
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        currentScale = initialScale;
+                        resolve(true)
+                    })
+                });
+            }
+
+            function focusOnMatch(match, round, rounds) {
+
+                // Compute round info
+                let athletes = Math.pow(2, rounds-round);
+                let matches = athletes/2;
+
+                // Safety check: valid round index
+                if(round >= rounds) return;
+
+                // Safety check: valid match index for round
+                if(match >= matches) return;
+
+                // Compose list of elements to focus on
+                var focusElements = [];
+                var currentRound = $('.round[data-number="' + round + '"]');
+                var currentMatch = currentRound.find('.match .teamContainer').eq(match);
+                focusElements.push(...currentMatch.find('.team'));
+                if(round < rounds-1) {
+                    var nextRound = $('.round[data-number="' + (round+1) + '"]');
+                    var nextMatch = nextRound.find('.match .teamContainer').eq(Math.floor(match/2));
+                    focusElements.push(...currentMatch.find('.connector'));
+                    if(match % 2 == 0) {
+                        focusElements.push(nextMatch.find('.team').eq(0));
+                    } else {
+                        focusElements.push(nextMatch.find('.team').eq(1));
+                    }
+                }
+
+
+
+                // Compose list of elements to fade out
+                var fadeOutElements = $('.team, .teamContainer > .connector');
+                focusElements.forEach((element) => {
+                    fadeOutElements = fadeOutElements.not(element);
+                });
+
+                // Compose animation
+                var fadeOutAnimation = {
+                    autoAlpha: 0.3
+                }
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to(fadeOutElements, 0.5, fadeOutAnimation);
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        resolve(true)
+                    })
+                });
+            }
+
+            function resetFocus() {
+
+                // Compose list of elements to focus on
+                var focusElements = $('.team, .connector');
+
+                // Compose animation
+                var fadeInAnimation = {
+                    autoAlpha: 1
+                }
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to(focusElements, 0.5, fadeInAnimation);
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        resolve(true)
+                    })
+                });
+            }
+
+            // Zooms to a given match
+            function zoomInMatch(match, round, rounds) {
+
+                // Compute round info
+                let athletes = Math.pow(2, rounds-round);
+                let matches = athletes/2;
+
+                // Safety check: valid round index
+                if(round >= rounds) return;
+
+                // Safety check: valid match index for round
+                if(match >= matches) return;
+
+                // Get match, round and document boxes
+                let matchBox = getMatchBox(match, round);
+                let roundBox = getRoundBox(round);
+                let documentBox = getDocumentBox();
+
+                // Settings
+                var minReadTime = 6;
+
+                // Compute target scale (round length to 30% of screen width)
+                var targetScale = 0.3*documentBox.width*currentScale/roundBox.width;
+
+                // Compose animations
+                var zoomingAnimation = {
+                    x: documentBox.width/2 - (roundBox.left -  initialBracketBox.left)*targetScale/currentScale - roundBox.width*targetScale/(2*currentScale),
+                    y : "+=" + ((documentBox.height/2 - matchBox.top*targetScale/currentScale - matchBox.height*targetScale/(2*currentScale) + paddingTopBottom)),
+                    scale: targetScale,
+                    ease: ExpoScaleEase.config(currentScale, targetScale, Power2.easeOut),
+                    delay: 1
+                };
+
+                // Return animation promise
+                let tl = new TimelineMax();
+                tl.to($('#bracket .jQBracket'), 1, zoomingAnimation);
+                return new Promise(function(resolve) {
+                    tl.eventCallback("onComplete", function() {
+                        currentScale = targetScale;
+                        resolve(true)
+                    })
+                });
+            }
+        });
+        </script>
+    </body>
+</html>

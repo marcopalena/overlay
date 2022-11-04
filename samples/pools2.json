@@ -1,0 +1,24 @@
+{
+    "pools" : [
+        {
+            "id" : "A1",
+            "sheetRankRange" : "Pools!A1:D8",
+            "sheetNameCell" : "Pools!A9"
+        },
+        {
+            "id" : "B1",
+            "sheetRankRange" : "Pools!F1:I8",
+            "sheetNameCell" : "Pools!F9"
+        },
+        {
+            "id" : "C1",
+            "sheetRankRange" : "Pools!K1:N8",
+            "sheetNameCell" : "Pools!K9"
+        },
+        {
+            "id" : "D1",
+            "sheetRankRange" : "Pools!P1:S8",
+            "sheetNameCell" : "Pools!P9"
+        }
+    ]
+}

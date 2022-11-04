@@ -1,0 +1,101 @@
+{
+      "message" : "updatePools",
+      "data" : {
+          "pools" : [
+              {
+                  "name" : "Girone A",
+                  "athletes" : [
+                        {
+                         "name" : "Cafaro Raffaele",
+                         "rank" : "1",
+                         "score" : "20",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Brondolo Elio",
+                         "rank" : "2",
+                         "score" : "12",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Costanza Enrico",
+                         "rank" : "3",
+                         "score" : "7",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Decastelli Tommaso",
+                         "rank" : "4",
+                         "score" : "4",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Ferraresi Giorgio",
+                         "rank" : "5",
+                         "score" : "4",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Pigone Stefano",
+                         "rank" : "6",
+                         "score" : "0",
+                         "style" : "5"
+                        },
+                        {
+                         "name" : "Palladino Giulia",
+                         "rank" : "7",
+                         "score" : "0",
+                         "style" : "5"
+                         }
+                  ]
+              },
+              {
+                  "name" : "Girone B",
+                  "athletes" : [
+                      {
+                          "name" : "Sarda Davide",
+                          "rank" : "1",
+                          "score" : "20",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Conserva Marco",
+                          "rank" : "1",
+                          "score" : "15",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Marinone Francesco",
+                          "rank" : "1",
+                          "score" : "10",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Ramezzana Martina",
+                          "rank" : "1",
+                          "score" : "3",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Buzzone Monica",
+                          "rank" : "1",
+                          "score" : "3",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Fossati Gabriele",
+                          "rank" : "1",
+                          "score" : "0",
+                          "style" : "5"
+                      },
+                      {
+                          "name" : "Verdi Marilena",
+                          "rank" : "1",
+                          "score" : "0",
+                          "style" : "5"
+                      }
+                  ]
+              }
+          ]
+      }
+    }

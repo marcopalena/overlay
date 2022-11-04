@@ -1,0 +1,1283 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/rpg-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
+        <style>
+            body {
+                background-color: #20262e;
+            }
+
+            .down {
+                color: red;
+            }
+
+            .up {
+                color: green;
+            }
+
+            .form-buttons {
+                text-align: left;
+                overflow: hidden;
+            }
+
+            .form {
+                display: inline-block;
+                min-width: 36px;
+                min-height: 36px;
+                padding: 3px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .form-button,.form-button:focus,.form-button:active:focus,.form-button.active:focus,
+            .form-button:active.focus,.form-button.active.focus {
+                box-shadow: none !important;
+            }
+
+            .ra {
+            	display: inline-block;
+            	text-decoration: none;
+            }
+
+            .row.form-group {
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+
+            .card-footer {
+                margin-right: 0px;
+                margin-left: 0px;
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+
+            /******************************************************************************************************
+                                                        CUSTOM CHECKBOX SWITCH
+            ******************************************************************************************************/
+            .custom-checkbox {
+                min-height: 1rem;
+                padding-left: 0;
+                margin-right: 0;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .custom-control-indicator {
+                content: "";
+                display: inline-block;
+                position: relative;
+                width: 30px;
+                height: 10px;
+                background-color: #818181;
+                border-radius: 15px;
+                margin-right: 10px;
+                -webkit-transition: background .3s ease;
+                transition: background .3s ease;
+                vertical-align: middle;
+                margin: 0 16px;
+                box-shadow: none;
+            }
+
+            .custom-checkbox .custom-control-indicator:after {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                background-color: #f1f1f1;
+                border-radius: 21px;
+                box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+                left: -2px;
+                top: -4px;
+                -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+                transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+                background-color: #007bff;
+                background-image: none;
+                box-shadow: none !important;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+                background-color: #007bff;
+                left: 15px;
+            }
+
+            .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+                box-shadow: none !important;
+            }
+
+            /******************************************************************************************************
+                                                            TABLE
+            ******************************************************************************************************/
+
+            .table-footer {
+                margin-top: 10px;
+            }
+            .table-footer .add-new {
+                float: right;
+        		height: 30px;
+        		font-weight: bold;
+        		font-size: 12px;
+        		text-shadow: none;
+        		min-width: 100px;
+        		border-radius: 50px;
+        		line-height: 13px;
+                margin-left: 5px;
+            }
+        	.table-footer .add-new i {
+        		margin-right: 4px;
+        	}
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+            table.table th i {
+                font-size: 13px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+            table.table th:last-child {
+                width: 150px;
+            }
+            table.table td {
+                vertical-align: middle;
+            }
+            table.table td a {
+        		cursor: pointer;
+                display: inline-block;
+                margin: 0px 5px;
+        		min-width: 24px;
+            }
+        	table.table td a.add {
+                color: #339AF0;
+            }
+            table.table td a.edit {
+                color: #339AF0;
+            }
+            table.table td a.delete {
+                color: #339AF0;
+            }
+            table.table td a.view {
+                color: #339AF0;
+            }
+            table.table td i {
+                font-size: 19px;
+            }
+        	table.table td a.add i {
+                line-height: 24px;
+            }
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+        	table.table .form-control.error {
+        		border-color: #f50000;
+        	}
+        	table.table td .add {
+        		display: none;
+        	}
+
+            input[type="file"] {
+                display: none;
+            }
+
+            .table-footer .load-pools {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 12px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+                margin-left: 5px;
+            }
+
+            .table-footer .load-pools i {
+        		margin-right: 4px;
+        	}
+
+            .table-footer .load-arenas {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 12px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+                margin-left: 5px;
+            }
+
+            .table-footer .load-arenas i {
+                margin-right: 4px;
+            }
+
+            .load-rounds {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 12px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+                margin-left: 5px;
+            }
+
+            .load-rounds {
+                margin-right: 4px;
+            }
+
+            button .collapse-label {
+                vertical-align: middle;
+            }
+            .collapse-label {
+               width: auto;
+               display: inline-block;
+               max-width: 100%;
+               overflow:hidden;
+               box-sizing: border-box;
+               padding-left: 5px;
+            }
+
+            .finished-match{
+                background-color:#EEEEEE !important;
+                color: #AAAAAA !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid mt-1 mt-sm-5 px-1 px-sm-5" style="min-width: 350px;">
+            <div id="accordion">
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="specificationHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSpecification" aria-expanded="true" aria-controls="collapseSpecification">
+                                <i class="fas fa-clipboard-list" style="margin-right: 10px;"></i>Specifications
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseSpecification" class="collapse" aria-labelledby="specificationHeading">
+                        <div class="card-body">
+                            <form id="specification-form" role="form">
+                                <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Tournament specification</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <label for="spreadsheet-id" class="col-sm-4 col-form-label">Google Sheet ID:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="spreadsheet-id" value="1mT_x09XH1Ddmw9bFmUBCe5ndcGUV1wDcghKL2k3Z6Do">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="arenas-number" class="col-sm-4 col-form-label">Number of Arenas:</label>
+                                    <div class="col-sm-1">
+                                        <input type="number" class="form-control" id="arenas-number" value="4">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="final-phase-arena" class="col-sm-4 col-form-label">Final phase arena:</label>
+                                    <div class="col-sm-1">
+                                        <input type="text" class="form-control" id="final-phase-arena" value="A">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="spreadsheet-id" class="col-sm-4 col-form-label">Athletes specification:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="athletes-range" value="Competitors!A1:F64">
+                                    </div>
+                                </div>
+                                <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Arena specification</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div id="arena-table-wrapper" class="table-responsive table-wrapper col-sm-12 text-center">
+                                        <table class="table table-bordered" id="arena-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Live Streamed</th>
+                                                    <!-- <th scope="col">Pools</th>
+                                                    <th scope="col">Final Phase</th>
+                                                    <th scope="col">Up to Round</th>
+                                                    <th scope="col">Last 8</th>
+                                                    <th scope="col">Last 4</th>
+                                                    <th scope="col">Semi</th>
+                                                    <th scope="col">Final</th>
+                                                    <th scope="col">2° Final</th> -->
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                        <div class="table-footer">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-right">
+                                                    <button type="button" class="btn btn-info arenas add-new"><i class="fas fa-plus"></i> Add Arena</button>
+                                                    <label for="load-arenas" class="btn btn-info load-arenas">
+                                                        <i class="fas fa-upload"></i> Load JSON
+                                                    </label>
+                                                    <input id="load-arenas" type="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Pools specification</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div id="pools-table-wrapper" class="table-responsive table-wrapper col-sm-12 text-center">
+                                        <table class="table table-bordered" id="pools-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Name Cell</th>
+                                                    <th scope="col">Rank Range</th>
+                                                    <th scope="col">Matches Range</th>
+                                                    <th scope="col">Arena</th>
+                                                    <th scope="col">Round</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                        <div class="table-footer">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-right">
+                                                    <button type="button" class="btn btn-info pools add-new"><i class="fas fa-plus"></i> Add Pool</button>
+                                                    <label for="load-pools" class="btn btn-info load-pools">
+                                                        <i class="fas fa-upload"></i> Load JSON
+                                                    </label>
+                                                    <input id="load-pools" type="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Final phase specification</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" id="rounds-json" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 form-group">
+                                    <div class="col-sm-12 text-right">
+                                        <label for="load-rounds" class="btn btn-info load-rounds">
+                                            <i class="fas fa-upload"></i> Load JSON
+                                        </label>
+                                        <input id="load-rounds" type="file"/>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <strong>Specifications update</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 offset-sm-2 text-center">
+                                    <button type="button" id="update-pools-button" class="btn btn-primary btn-rounded"><i class="fas fa-sync-alt" style=""></i> Update Pools</button>
+                                    <button type="button" id="update-rounds-button" class="btn btn-primary btn-rounded"><i class="fas fa-sync-alt" style=""></i> Update Rounds</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="stateHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseState" aria-expanded="true" aria-controls="collapseState">
+                                <i class="fas fa-eye" style="margin-right: 10px;"></i>Tournament State
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseState" class="collapse" aria-labelledby="stateHeading">
+                        <div class="card-body">
+                            <form id="state-form" role="form">
+                                <div class="row">
+                                    <span class="col-3">Tournament state: </span><span class="col-6" id="tournament-state">Uninitialized</span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-3">Current phase: </span><span class="col-2" id="tournament-phase">None</span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-3">Current round: </span><span class="col-6" id="tournament-round">NONE</span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-3">Athletes: </span><span class="col-2" id="num-athletes">0</span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-3">Arenas: </span><span class="col-6" id="num-arenas">0</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"  id="streamed-arenas">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Tournament initialization</strong>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="initialize-local" class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-auto"> Initialize from local file:</div>
+                                            <div class="custom-control custom-checkbox col-auto text-left">
+                                                <input type="checkbox" class="custom-control-input" id="initialize-local">
+                                                <span class="custom-control-indicator"></span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="col-6">
+                                        <div class="col-auto">
+                                            <input type="text" class="form-control" disabled="true" id="local-file" value="dump/tournament.json">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group mt-2">
+                                    <div class="col-12 text-center">
+                                        <button type="button" id="initialize-tournament-button" class="btn btn-primary btn-rounded">
+                                            <i class="fas fa-stars" style=""></i> Initialize Tournament
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <strong>Tournament controls</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <button type="button" id="start-pools-phase-button" class="btn btn-primary btn-rounded"><i class="fas fa-play" style=""></i> Start Pools Phase</button>
+                                    <button type="button" id="start-final-phase-button" class="btn btn-primary btn-rounded"><i class="fas fa-play" style=""></i> Start Final Phase</button>
+                                    <button type="button" id="next-step" class="btn btn-primary btn-rounded"><i class="fas fa-arrow-right" style=""></i> Next Step</button>
+                                    <button type="button" id="previous-step" class="btn btn-primary btn-rounded"><i class="fas fa-arrow-left" style=""></i> Previous Step</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="settingsHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                                <i class="fas fa-sliders-h" style="margin-right: 10px;"></i>Overlay Settings
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseSettings" class="collapse" aria-labelledby="settingsHeading">
+                        <div class="card-body">
+                            <form id="specification-form" role="form">
+                                <div class="row form-group" style="margin-bottom: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Fight overlay settings</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <label for="use-start-animation" class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-auto"> Use animation on fight start:</div>
+                                            <div class="custom-control custom-checkbox col-auto text-left">
+                                                <input type="checkbox" class="custom-control-input" checked id="use-start-animation">
+                                                <span class="custom-control-indicator"></span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="use-end-animation" class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-auto"> Use animation on fight end:</div>
+                                            <div class="custom-control custom-checkbox  col-auto text-left">
+                                                <input type="checkbox" class="custom-control-input" checked id="use-end-animation">
+                                                <span class="custom-control-indicator"></span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-6">
+                                        <label for="new-match-strategy" class="col-sm-6 col-form-label">Arena:</label>
+                                        <select class="form-control col-auto" id="select-arena">
+                                            <option>A</option>
+                                            <option>B</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-sm-2 text-center">
+                                        <button type="button" id="show-fight-overlay-button" class="btn btn-primary btn-rounded"><i class="fas fa-eye" style=""></i> Show Fight Overlay</button>
+                                        <button type="button" id="hide-fight-overlay-button" class="btn btn-primary btn-rounded"><i class="fas fa-eye-slash" style=""></i> Hide Fight Overlay</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="scorekeepHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseScorekeep" aria-expanded="true" aria-controls="collapseScorekeep">
+                                <i class="ra ra-sword" style="margin-right: 10px;"></i>Scorekeeping Controls
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseScorekeep" class="collapse" aria-labelledby="scorekeepHeading">
+                        <form id="control-form" role="form">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="row mb-2">
+                                        <div class="col-12 mb-2">
+                                            <strong>Left contender</strong>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <input type="text" class="form-control" id="leftContenderName" placeholder="Name">
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <input type="text" class="form-control" id="leftContenderSchool" placeholder="Order">
+                                        </div>
+                                        <div class="col-12 text-center form-buttons mb-2">
+                                            <div class="btn-group-toggle btn-group" id="leftContenderClosedForms" data-toggle="buttons">
+                                                <label class="btn btn-outline-primary form-button form" data-form="1">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="2">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="3">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="4">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="5">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="6">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="7">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row">
+                                        <div class="col-12 mb-2">
+                                            <strong>Right contender</strong>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <input type="text" class="form-control" id="rightContenderName" placeholder="Name">
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <input type="text" class="form-control" id="rightContenderSchool" placeholder="Order">
+                                        </div>
+                                        <div class="col-12 text-center form-buttons">
+                                            <div class="btn-group-toggle btn-group" id="rightContenderClosedForms" data-toggle="buttons">
+                                                <label class="btn btn-outline-primary form-button form" data-form="1">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="2">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="3">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="4">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="5">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="6">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                                <label class="btn btn-outline-primary form-button form" data-form="7">
+                                                    <input type="checkbox" autocomplete="off">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <strong>Overlay frame controls</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="button" id="show-button" class="btn btn-primary btn-rounded">Show Overlay</button>
+                                    <button type="button" id="hide-button" class="btn btn-primary btn-rounded">Hide Overlay</button>
+                                    <button type="button" id="prepare-button" class="btn btn-primary btn-rounded">Prepare Fight</button>
+                                    <button type="button" id="finish-button" class="btn btn-primary btn-rounded">Finish Fight</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <strong>Fight timer controls</strong>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 5px">
+                                <div class="col-12 text-center">
+                                    <button type="button" id="timer-control-button" class="btn btn-primary btn-rounded" alt="Start fight timer"><i class="fas fa-stopwatch"></i><span class="collapse-label">Start Timer</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="row mb-2">
+                                        <div class="col-12 mb-2">
+                                            <strong>Left contender</strong>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <button type="button" id="clear-left-button" class="btn btn-primary btn-rounded" alt="Clear left contender score"><i class="fas fa-eraser"></i></button>
+                                            <button type="button" id="plus-left-button" class="btn btn-primary btn-rounded" alt="Increment left contender score"><i class="fas fa-plus-circle"></i></button>
+                                            <button type="button" id="minus-left-button" class="btn btn-primary btn-rounded" alt="Decrement left contender score"><i class="fas fa-minus-circle"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="row mb-2">
+                                        <div class="col-12 mb-2">
+                                            <strong>Results controls</strong>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <button type="button" id="nullo-button" class="btn btn-primary btn-rounded" alt="Assault results in Nullo"><i class="fas fa-times"></i> Nullo</button>
+                                            <button type="button" id="doppio-button" class="btn btn-primary btn-rounded" alt="Assault results in Doppio"><i class="fas fa-check-double"></i> Doppio</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="row mb-2">
+                                        <div class="col-12 mb-2">
+                                            <strong>Right contender</strong>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <button type="button" id="clear-right-button" class="btn btn-primary btn-rounded" alt="Clear right contender score"><i class="fas fa-eraser"></i></button>
+                                            <button type="button" id="plus-right-button" class="btn btn-primary btn-rounded" alt="Increment right contender score"><i class="fas fa-plus-circle"></i></button>
+                                            <button type="button" id="minus-right-button" class="btn btn-primary btn-rounded" alt="Decrement right contender score"><i class="fas fa-minus-circle"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="bannerHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBanner" aria-expanded="true" aria-controls="collapseBanner">
+                                <i class="fas fa-sign" style="margin-right: 10px;"></i>Wait & Intermission Controls
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseBanner" class="collapse" aria-labelledby="bannerHeading">
+                        <form id="wait-intermission-form" role="form">
+                            <div class="card-body">
+                                    <div class="row form-group" style="margin-bottom: 10px;">
+                                        <div class="col-sm-12">
+                                            <strong>Wait countdown settings</strong>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row form-group">
+                                        <label for="startDate" class="col-sm-4 col-form-label">Event start date:</label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group date" id="startDate" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" data-target="#startDate"/>
+                                                <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
+                                                    <div class="input-group-text" style="width: 40px;text-align: center;"><i class="fas fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="startDate" class="col-sm-4 col-form-label">Event start time:</label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group date" id="startTime" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" data-target="#startTime"/>
+                                                <div class="input-group-append" data-target="#startTime" data-toggle="datetimepicker">
+                                                    <div class="input-group-text" style="width: 40px;text-align: center;"><i class="fas fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                        <div class="col-sm-12">
+                                            <strong>Intermission message settings</strong>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row form-group">
+                                        <label for="intermission-msg" class="col-sm-4 col-form-label">Intermission message:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="intermission-msg" value="Be right back...">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="card-footer" style="padding-top: 5px;">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <strong>Wait countdown controls</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-sm-2 text-center">
+                                        <button type="button" id="show-countdown-button" class="btn btn-primary btn-rounded" alt="Toggle wait countdown"><i class="fas fa-clock"  style="margin-right: 10px;"></i>Show timer</button>
+                                        <button type="button" id="start-countdown-button" class="btn btn-primary btn-rounded" alt="Start wait countdown"><i class="fas fa-play" style=""></i></button>
+                                        <button type="button" id="stop-countdown-button" class="btn btn-primary btn-rounded" alt="Stop wait countdown"><i class="fas fa-pause" style=""></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer" style="padding-top: 5px">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <strong>Intermission controls</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 offset-sm-2 text-center">
+                                        <button type="button" id="show-intermission-msg-button" class="btn btn-primary btn-rounded"><i class="fas fa-comment" style="margin-right: 10px;"></i>Show message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="poolsHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePools" aria-expanded="true" aria-controls="collapsePools">
+                                <i class="fas fa-bars" style="margin-right: 10px;"></i>Pools Overlay Controls
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapsePools" class="collapse" aria-labelledby="poolsHeading">
+                        <div class="card-body">
+                            <form id="pools-form" role="form">
+                                <div class="row form-group" style="margin-bottom: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Pools rankings settings</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group text-center">
+                                    <div class="table-responsive table-wrapper col-sm-12 text-center">
+                                        <table class="table table-bordered" id="pools-review-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Arena</th>
+                                                    <th scope="col">Round</th>
+                                                    <th scope="col">Progress</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row form-group" style="margin-bottom: 10px;">
+                                    <div class="col-sm-12">
+                                        <strong>Pools rankings autoslide</strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <label for="autoslide-freq" class="col-12 col-md-4 col-form-label">Frequency (ms):</label>
+                                    <div class="col-12 col-md-4 mb-2 mb-md-0">
+                                        <input type="number" class="form-control" id="autoslide-freq" value="10000">
+                                    </div>
+                                    <div class="col-12 col-md-4 text-center text-md-left">
+                                        <button type="button" id="toggle-pools-sliding-button" class="btn btn-primary btn-rounded"><i class="fas fa-play" style=""></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-sm-8 offset-sm-2 text-center">
+                                    <button type="button" id="update-pools-rankings-button" class="btn btn-primary btn-rounded"><i class="fas fa-sync-alt" style=""></i> Update Pools Rankings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header" id="bracketHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBracket" aria-expanded="true" aria-controls="collapseBracket">
+                                <i class="fas fa-bars" style="margin-right: 10px;"></i>Bracket Overlay Controls
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseBracket" class="collapse" aria-labelledby="bracketHeading">
+                        <div class="card-body">
+                            <form id="pools-form" role="form">
+                                <div class="row form-group text-center">
+                                    <div class="col-12" id="round-reviews">
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer" style="padding-top: 5px">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <button type="button" id="initialize-bracket" class="btn btn-primary btn-rounded"><i class="fas fa-sync-alt" style=""></i> Initialize Bracket</button>
+                                    <button type="button" id="update-bracket" class="btn btn-primary btn-rounded"><i class="fas fa-sync-alt" style=""></i> Update Bracket</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="popper.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="moment.js"></script>
+        <script src="TweenMax.min.js"></script>
+        <script src="tempusdominus-bootstrap-4.min.js"></script>
+        <script type="text/javascript" src="controller.js"></script>
+        <script type="text/javascript" src="initializationData.js"></script>
+        <script type="text/javascript">
+            $(function () {
+
+                // Setup date and time pickers for wait & intermission panel
+                var finalDate = new Date('01/06/2019 14:00');
+                //finalDate.setHours(finalDate.getHours() + 4);
+                $('#startTime').datetimepicker({
+                    format: 'HH:mm:ss',
+                    date: finalDate,
+                    keepInvalid: false
+                });
+                $('#startDate').datetimepicker({
+                    format: 'L',
+                    date: finalDate,
+                    keepInvalid: false
+                });
+                $('#startDate').on("change.datetimepicker", function (e) {
+                    $('#startDate').datetimepicker('date', e.target.value);
+                    let el = document.querySelector('#startDate > input');
+                    let ev = new Event('input',{bubbles:true})
+                    el.dispatchEvent(ev);
+                });
+                $('#startTime').on("change.datetimepicker", function (e) {
+                    $('#startTime').datetimepicker('date', e.target.value);
+                    let el = document.querySelector('#startTime > input');
+                    let ev = new Event('input',{bubbles:true})
+                    el.dispatchEvent(ev);
+                });
+
+
+                /******************************************************************************************************
+                                                                ARENAS TABLE
+                ******************************************************************************************************/
+
+                // Initiaize arenas composition table
+            	var arenaActions = '<a class="add-arena add" title="Add" data-toggle="tooltip"><i class="fas fa-check"></i></a>'+
+                                   '<a class="edit-arena edit" title="Edit" data-toggle="tooltip"><i class="fas fa-edit"></i></a>'+
+                                   '<a class="delete-arena delete" title="Delete" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>';
+
+            	// Append table with add row form on add new button click
+                $(".arenas.add-new").click(function(){
+            		$(this).attr("disabled", "disabled");
+                    $(this).removeClass("btn-info").addClass("btn-basic");
+            		var index = $("#arena-table tbody tr:last-child").index();
+                    var row = '<tr>' +
+                        '<td><input type="text" class="form-control" name="name" id="arena-name"></td>' +
+                        '<td><input type="checkbox" class="form-control" name="streamed" id="arena-streamed"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="pools" id="arena-pools"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="last-32" id="arena-last-32"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="last-16" id="arena-last-16"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="last-8" id="arena-last-8"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="last-4" id="arena-last-4"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="semi" id="arena-semi"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="final" id="arena-final"></td>' +
+                        // '<td><input type="checkbox" class="form-control" name="secondary" id="arena-secondary"></td>' +
+            			'<td>' + arenaActions + '</td>' +
+                    '</tr>';
+                	$("#arena-table").append(row);
+            		$("#arena-table tbody tr").eq(index + 1).find(".add-arena, .edit-arena").toggle();
+                    $('#arena-table [data-toggle="tooltip"]').tooltip({
+                        trigger : 'hover'
+                    });
+                });
+
+            	// Add row on add button click
+            	$(document).on("click", ".add-arena", function(){
+
+                    // Finalize arena row
+                    var empty = false;
+                    var input = $(this).parents("tr").find('input[type="text"]');
+                    input.each(function(){
+                        if(!$(this).val()){
+                            $(this).addClass("error");
+                            empty = true;
+                        } else{
+                            $(this).removeClass("error");
+                        }
+            		});
+            		$(this).parents("tr").find(".error").first().focus();
+            		if(!empty){
+            			input.each(function(){
+                            $(this).parent("td").html($(this).val());
+            			});
+                        checkboxes = $(this).parents("tr").find('input[type="checkbox"]');
+                        checkboxes.each(function(){
+                            $(this).parent("td").html($(this).is(':checked') === true ? "Y" : "N");
+                        });
+            			$(this).parents("tr").find(".add-arena, .edit-arena").toggle();
+            			$(".arenas.add-new").removeAttr("disabled");
+                        $(".arenas.add-new").removeClass("btn-basic").addClass("btn-info");
+            		}
+                });
+
+            	// Edit row on edit button click
+            	$(document).on("click", ".edit-arena", function(){
+                    $(this).parents("tr").find("td:not(:last-child)").each(function(index, elem){
+                        if(index > 0) {
+                            $(this).html('<input type="checkbox" class="form-control" ' + ($(this).text() == "Y" ? 'checked="checked"' : "") + '>');
+                        } else {
+                            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                        }
+            		});
+            		$(this).parents("tr").find(".add-arena, .edit-arena").toggle();
+            		$(".arenas.add-new").attr("disabled", "disabled");
+                    $(".arenas.add-new").removeClass("btn-info").addClass("btn-basic");
+                });
+
+            	// Delete row on delete button click
+            	$(document).on("click", ".delete-arena", function(){
+                    var index = $(this).parents("tbody").find("tr").index($(this).parents("tr"));
+                    $(this).parents("tr").remove();
+                    $("#arena-review-table tbody tr").eq(index).remove();
+            		$(".arenas.add-new").removeAttr("disabled");
+                    $(".arenas.add-new").removeClass("btn-basic").addClass("btn-info");
+                });
+
+                // Add a new arena specification
+                function addArena(arena) {
+
+                    // Add new pools rows
+                    let {name, isStreamed, isPools, isLast32, isLast16, isLast8, isLast4, isSemi, isFinal, isSecondary} = arena;
+                    var index = $("#arena-table tbody tr:last-child").index();
+                    var row = '<tr>' +
+                    '<td>' + name + '</td>' +
+                    '<td>' + (isStreamed ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isPools ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isLast32 ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isLast16 ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isLast8 ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isLast4 ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isSemi ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isFinal ? "Y" : "N") + '</td>' +
+                    // '<td>' + (isSecondary ? "Y" : "N") + '</td>' +
+                    '<td>' + arenaActions + '</td>' +
+                    '</tr>';
+                    $("#arena-table").append(row);
+                    $('#arena-table [data-toggle="tooltip"]').tooltip();
+                }
+
+                // Load JSON arenas
+                $("#load-arenas").on('change', function(event){
+
+                    // Read JSON file
+                    var reader = new FileReader();
+                    reader.onload = function onReaderLoad(event){
+
+                        // Parse arenas JSON
+                        var arenas = JSON.parse(event.target.result);
+                        if(!("arenas" in arenas)) {
+                            return;
+                        }
+
+                        // Clear existing arenas rows
+                        $("#arena-table tbody").find("tr").remove();
+
+                        // Add new arenas rows
+                        arenas["arenas"].forEach((arena) => addArena);
+
+                        // Clear input file
+                        $("#load-arenas").val('');
+                    };
+
+                    // Read the JSON file content
+                    if(event.target.files.length > 0) {
+                        reader.readAsText(event.target.files[0]);
+                    }
+                });
+
+                /******************************************************************************************************
+                                                                POOLS TABLE
+                ******************************************************************************************************/
+
+                // Initialize tables tooltips
+            	$('[data-toggle="tooltip"]').tooltip({
+                    trigger : 'hover'
+                });
+
+                // Initiaize pools composition table
+                var poolsReviewActions = '<a class="view-pool view" title="View" data-toggle="tooltip"><i class="fas fa-eye"></i></a>';
+            	var poolsActions = '<a class="add-pool add" title="Add" data-toggle="tooltip"><i class="fas fa-check"></i></a>'+
+                                   '<a class="edit-pool edit" title="Edit" data-toggle="tooltip"><i class="fas fa-edit"></i></a>'+
+                                   '<a class="delete-pool delete" title="Delete" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>';
+
+            	// Append table with add row form on add new button click
+                $(".pools.add-new").click(function(){
+            		$(this).attr("disabled", "disabled");
+                    $(this).removeClass("btn-info").addClass("btn-basic");
+            		var index = $("#pools-table tbody tr:last-child").index();
+                    var row = '<tr>' +
+                        '<td><input type="text" class="form-control" name="pool-id" id="pool-id"></td>' +
+                        '<td><input type="text" class="form-control" name="name-cell" id="name-cell"></td>' +
+                        '<td><input type="text" class="form-control" name="rank-range" id="rank-range"></td>' +
+                        '<td><input type="text" class="form-control" name="matches-range" id="matches-range"></td>' +
+                        '<td><input type="text" class="form-control" name="pool-arena" id="pool-arena"></td>' +
+                        '<td><input type="text" class="form-control" name="pool-round" id="pool-round"></td>' +
+            			'<td>' + poolsActions + '</td>' +
+                    '</tr>';
+                	$("#pools-table").append(row);
+            		$("#pools-table tbody tr").eq(index + 1).find(".add-pool, .edit-pool").toggle();
+                    $('#pools-table [data-toggle="tooltip"]').tooltip({
+                        trigger : 'hover'
+                    });
+                });
+
+            	// Add row on add button click
+            	$(document).on("click", ".add-pool", function(){
+
+                    // Finalize pools row
+                    var empty = false;
+                    var input = $(this).parents("tr").find('input[type="text"]');
+                    input.each(function(){
+                        if(!$(this).val()){
+                            $(this).addClass("error");
+                            empty = true;
+                        } else{
+                            $(this).removeClass("error");
+                        }
+            		});
+            		$(this).parents("tr").find(".error").first().focus();
+            		if(!empty){
+            			input.each(function(){
+            				$(this).parent("td").html($(this).val());
+            			});
+            			$(this).parents("tr").find(".add-pool, .edit-pool").toggle();
+            			$(".pools.add-new").removeAttr("disabled");
+                        $(".pools.add-new").removeClass("btn-basic").addClass("btn-info");
+            		}
+
+                    // Add row to pools review table
+                    if($("#pools-table tbody tr").length > $("#pools-review-table tbody tr").length) {
+                        var cells = $(this).parents("tr").find("td");
+                        let id = cells.eq(0).text();
+                        let arena = cells.eq(4).text();
+                        let round = cells.eq(5).text();
+                        var index = $("#pools-review-table tbody tr:last-child").index();
+                        var row = '<tr>' +
+                        '<td>' + id + '</td>' +
+                        '<td>' + arena + '</td>' +
+                        '<td>' + round + '</td>' +
+                        '<td><span class="done">0</span>/<span class="tot">0</span></td>' +
+                        '<td>' + poolsReviewActions + '</td>' +
+                        '</tr>';
+                        $("#pools-review-table").append(row);
+                        $('#pools-review-table [data-toggle="tooltip"]').tooltip({
+                            trigger : 'hover'
+                        });
+                    }
+                });
+
+            	// Edit row on edit button click
+            	$(document).on("click", ".edit-pool", function(){
+                    $(this).parents("tr").find("td:not(:last-child)").each(function(){
+            			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+            		});
+            		$(this).parents("tr").find(".add-pool, .edit-pool").toggle();
+            		$(".pools.add-new").attr("disabled", "disabled");
+                    $(".pools.add-new").removeClass("btn-info").addClass("btn-basic");
+                });
+
+            	// Delete row on delete button click
+            	$(document).on("click", ".delete-pool", function(){
+                    var index = $(this).parents("tbody").find("tr").index($(this).parents("tr"));
+                    $(this).parents("tr").remove();
+                    $("#pools-review-table tbody tr").eq(index).remove();
+            		$(".pools.add-new").removeAttr("disabled");
+                    $(".pools.add-new").removeClass("btn-basic").addClass("btn-info");
+                });
+
+                // Add a new pool specification
+                function addPool(pool) {
+
+                    // Add new pools rows
+                    let {id, sheetRankRange, sheetNameCell, sheetMatchesRange, arena, round} = pool;
+                    var index = $("#pools-table tbody tr:last-child").index();
+                    var row = '<tr>' +
+                    '<td>' + id + '</td>' +
+                    '<td>' + sheetNameCell + '</td>' +
+                    '<td>' + sheetRankRange + '</td>' +
+                    '<td>' + sheetMatchesRange + '</td>' +
+                    '<td>' + arena + '</td>' +
+                    '<td>' + round + '</td>' +
+                    '<td>' + poolsActions + '</td>' +
+                    '</tr>';
+                    $("#pools-table").append(row);
+                    $('#pools-table [data-toggle="tooltip"]').tooltip();
+
+                    // Add new pools review rows
+                    index = $("#pools-review-table tbody tr:last-child").index();
+                    row = '<tr>' +
+                    '<td>' + id + '</td>' +
+                    '<td>' + arena + '</td>' +
+                    '<td>' + round + '</td>' +
+                    '<td><span class="done">0</span>/<span class="tot">0</span></td>' +
+                    '<td>' + poolsReviewActions + '</td>' +
+                    '</tr>';
+                    $("#pools-review-table").append(row);
+                    $('#pools-review-table [data-toggle="tooltip"]').tooltip();
+                }
+
+                /******************************************************************************************************
+                                                                ROUNDS TABLE
+                ******************************************************************************************************/
+
+
+                // Load JSON pools
+                $("#load-pools").on('change', function(event){
+
+                    // Read JSON file
+                    var reader = new FileReader();
+                    reader.onload = function onReaderLoad(event){
+
+                        // Parse pools JSON
+                        var pools = JSON.parse(event.target.result);
+                        if(!("pools" in pools)) {
+                            return;
+                        }
+
+                        // Clear existing pools rows and pools review rows
+                        $("#pools-table tbody").find("tr").remove();
+                        $("#pools-review-table tbody").find("tr").remove();
+
+                        // Add new pools rows
+                        pools["pools"].forEach((pool) => addPool);
+
+                        // Clear input file
+                        $("#load-pools").val('');
+                    };
+
+                    // Read the JSON file content
+                    if(event.target.files.length > 0) {
+                        reader.readAsText(event.target.files[0]);
+                    }
+                });
+
+
+                // Load JSON final phase rounds
+                $("#load-rounds").on('change', function(event){
+
+                    // Read JSON file
+                    var reader = new FileReader();
+                    reader.onload = function onReaderLoad(event){
+
+                        // Parse final phase round JSON
+                        var rounds = JSON.parse(event.target.result);
+
+                        // Set JSON content of the final phase text area (pretty printing it)
+                        $("#rounds-json").text(JSON.stringify(rounds, undefined, 2));
+                    };
+
+                    // Read the JSON file content
+                    if(event.target.files.length > 0) {
+                        reader.readAsText(event.target.files[0]);
+                    }
+                });
+
+                // Initialize data
+                $('#rounds-json').text(JSON.stringify(initialFinalPhaseSpecs, undefined, 2));
+                initialPoolsSpecs["pools"].forEach((pool) => addPool(pool));
+                initialArenasSpec["arenas"].forEach((arena) => addArena(arena));
+
+                /******************************************************************************************************
+                                                                TORUNAMENT INIT
+                ******************************************************************************************************/
+
+                // Enable/Disable local file text box
+                $(document).on("click", "#initialize-local", function(){
+                    var initLocal = $('#initialize-local').is(':checked');
+                    if(initLocal) {
+                        $("#local-file").removeAttr("disabled");
+                    } else {
+                        $("#local-file").attr("disabled", "disabled");
+                    }
+                });
+                
+            });
+
+            $( document ).click(function() {
+               $('.tooltip').remove();
+            });
+        </script>
+    </body>
+</html>

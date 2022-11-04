@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="1280"
+   height="400"
+   viewBox="0 0 1280 400"
+   version="1.1"
+   id="frame-bottom-shadow-clip"
+   >
+  <defs
+     id="defs44916">
+      <mask
+       id="frame-bottom-shadow-clip-mask">
+      <rect
+         style="fill:#ffffff"
+         height="400"
+         width="0"
+         y="0"
+         x="640"
+         id="frame-bottom-shadow-clip-mask-rect" />
+    </mask>
+  </defs>
+  <metadata
+     id="metadata44919">
+    </metadata>
+  <g
+     mask="url(#frame-bottom-shadow-clip-mask)"
+     id="frame-bottom-shadow-clip-container">
+    <path
+       id="frame-bottom-left-shadow-clip"
+       style="stroke-width:1.74907263359;display:inline;fill:#ffffff"
+       d="M517.77292 92.51314C536.95788 94.76075 548.75308 105.11794 556.40332 117.03485C556.40332 117.03485 539.15362 96.60882 518.9246 96.60882C518.9246 96.60882 498.69591 96.60882 498.69591 96.60882C498.69591 96.60882 50.0 96.60843 50.0 96.60843C50.0 96.60843 50.0 92.51314 50.0 92.51314C50.0 92.51314 517.77292 92.51314 517.77292 92.51314" />
+    <path
+       d="m 762.22737,92.51329 c -19.18494,2.24761 -30.98014,12.6048 -38.63037,24.52171 0,0 17.2497,-20.42603 37.47869,-20.42603 0,0 20.22868,0 20.22868,0 0,0 448.69563,-3.9e-4 448.69563,-3.9e-4 0,0 0,-4.09529 0,-4.09529 0,0 -467.77263,0 -467.77263,0"
+       style="display:inline;fill:#ffffff;stroke-width:1.74907267"
+       id="frame-bottom-right-shadow-clip"
+       />
+  </g>
+</svg>

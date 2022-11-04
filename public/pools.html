@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/standings.css">
+        <style>
+            [hidden] {
+              display: inherit !important;
+            }
+
+            @font-face {
+                font-family: 'NeoSansStd';
+                src: url('./fonts/NeoSansStd-BoldItalic.eot');
+                src: url('./fonts/NeoSansStd-BoldItalic.eot?#iefix') format('embedded-opentype'),
+                     url('./fonts/NeoSansStd-BoldItalic.woff2') format('woff2'),
+                     url('./fonts/NeoSansStd-BoldItalic.woff') format('woff'),
+                     url('./fonts/NeoSansStd-BoldItalic.ttf')  format('truetype'),
+                     url('./fonts/NeoSansStd-BoldItalic.svg#Neo Sans Std') format('svg');
+             font-weight: bold;
+             font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+			<div class="slides">
+			</div>
+		</div>
+		<script src="head.min.js"></script>
+		<script src="reveal.js"></script>
+		<script src="jquery-3.3.1.min.js"></script>
+        <script src="TweenMax.min.js"></script>
+        <script src="moment.js"></script>
+        <script src="jquery.countdown.js"></script>
+        <script src="popper.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+
+        <script>
+
+            $(document).ready(function() {
+
+
+                // Slide navigation
+                function gotoSlide(slideId){
+                    var indices = Reveal.getIndices($('#' + slideId).get(0));
+                    Reveal.slide(indices.h, indices.v);
+                }
+
+                // Initialize slides
+                Reveal.initialize({
+                    fragments: false,
+                    loop: true,
+                    progress: false,
+                    controls: false,
+                    center: false,
+                    transition: 'concave',
+                    transitionSpeed: 'slow'
+                });
+
+                // Pause auto-sliding
+                Reveal.toggleAutoSlide(false);
+                var autoslideFreq = 5000;
+
+                // Connect to server through a web socket
+                var socket = new WebSocket('ws://localhost:3000/registerPools');
+
+                // Set web socket message callback
+                socket.onmessage = function(e) {
+
+                    // Get message data
+                    var json = JSON.parse(e.data);
+                    var message = json['message'];
+                    var data = json['data'];
+
+                    // Handle update messages
+                    switch(message) {
+
+                        case "updatePools":
+
+                            // Add slides for unknown pools
+                            var pools = JSON.parse(data["pools"]);
+                            let poolIds = Object.keys(pools);
+                            poolIds.sort((a, b) => {
+                                if(a < b) { return -1; }
+                                if(a > b) { return 1; }
+                                return 0;
+                            });
+                            var prev = null;
+                            poolIds.forEach((key) => {
+                                let slide = $('section[data-id='+key+']');
+                                if(slide.length === 0) {
+                                    const poolSlideHtml = `
+                                    <section id="pools-slide-${key}" class="pools-slide" data-id="${key}" data-autoslide="${autoslideFreq}">
+                                        <div class="card bg-dark text-white border-secondary mb-3" style="margin-top: 60px;">
+                                            <div class="card-header py-2"><span class="pools-name" style="font-family: NeoSansStd; font-weight: bold; font-style: italic;">Girone</span></div>
+                                            <table class="table table-dark" style="font-size: 20pt;">
+                                              <thead>
+                                                <tr>
+                                                  <th style="color: #f39400; font-weight: bold; font-size: 2rem;" scope="col">#</th>
+                                                  <th style="color: #f39400;  font-weight: bold; font-size: 2rem;" scope="col">Nome</th>
+                                                  <th style="color: #f39400;  font-weight: bold; font-size: 2rem;" scope="col">Accademia</th>
+                                                  <th style="color: #f39400;  font-weight: bold;  text-align: center; font-size: 2rem;" scope="col">Punti</th>
+                                                  <th style="color: #f39400;  font-weight: bold; text-align: center; font-size: 2rem;" scope="col">Stile</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody class="pools-table-body">
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+                                    `
+                                    if(prev === null) {
+                                        $('.slides').prepend(poolSlideHtml);
+                                    } else {
+                                        prev.after(poolSlideHtml);
+                                    }
+                                    prev = slide = $('section[data-id='+key+']');
+                                } else {
+                                    prev = slide;
+                                }
+                            });
+
+                            // Resync slides
+                            Reveal.sync();
+                            let indices = Reveal.getIndices();
+                            if(indices.h === undefined) {
+                                gotoSlide('pools-slide-' + poolIds[0]);
+                            }
+                            Reveal.toggleAutoSlide(false);
+
+                            // Update pools slides
+                            $('.pools-slide').each((index, el) => {
+
+                                // Get pool
+                                var poolSlide = $(el);
+                                var id = poolSlide.data("id");
+                                if(id == undefined) return true;
+                                var pool = pools[id];
+
+                                // Clear pool rows
+                                var poolTableBody = poolSlide.find('.pools-table-body');
+                                poolTableBody.find('tr').remove();
+
+                                // Update pool name
+                                poolSlide.find('.pools-name').first().text("Girone " + pool["name"]);
+
+                                // Make sure pool's athletes are sorted by rank
+                                var athletes = pool["athletes"];
+                                athletes.sort((a, b) => a["rank"] - b["rank"]);
+
+                                // Update pool's rows
+                                var poolRowsHtml = '';
+                                athletes.forEach((athlete) => {
+                                    const poolRowHtml = `
+                                    <tr>
+                                      <th class="py-2"  scope="row">${athlete["rank"]}</th>
+                                      <td class="py-2" >${athlete["name"]}</td>
+                                      <td class="py-2" >${athlete["academy"]}</td>
+                                      <td class="py-2" style="text-align: center;">${athlete["score"]}</td>
+                                      <td class="py-2" style="text-align: center;">${athlete["style"]}</td>
+                                    </tr>`;
+                                    poolRowsHtml += poolRowHtml;
+                                });
+                                poolTableBody.html(poolRowsHtml);
+                            });
+                            break;
+
+                        case "showPool":
+
+                            // Get target pool
+                            let poolId = data["poolId"];
+                            let slide = $('section[data-id=' + poolId + ']');
+                            if(slide.length === 0) {
+                                return;
+                            }
+
+                            // Disable autoslide
+                            Reveal.toggleAutoSlide(false);
+
+                            // Go to selected pool
+                            gotoSlide('pools-slide-' + poolId);
+                            break;
+
+                        case "toggleSliding":
+
+                            // Update frequency
+                            let freq = parseInt(data["freq"]);
+                            if(autoslideFreq !== freq) {
+                                $('.pools-slide').attr('data-autoslide', freq);
+                                var slidingStatus = Reveal.isAutoSliding();
+                                Reveal.sync();
+                                Reveal.toggleAutoSlide(slidingStatus);
+                                autoslideFreq = freq;
+                            }
+
+                            // Enable autoslide
+                            Reveal.toggleAutoSlide();
+                            break;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

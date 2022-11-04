@@ -1,0 +1,2963 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/rpg-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
+        <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="css/select.bootstrap4.min.css">
+        <link rel="stylesheet" href="css/video-js.css">
+        <style>
+            body {
+                background-color: #20262e;
+            }
+
+            #message-notification {
+                display: none;
+            	position:absolute;
+                width: 40%;
+                left: 30%;
+                z-index:100;
+            }
+
+            .down {
+                color: red;
+            }
+
+            .up {
+                color: green;
+            }
+
+            .form-buttons {
+                text-align: left;
+                overflow: hidden;
+            }
+
+            .form {
+                display: inline-block;
+                min-width: 31px;
+                min-height: 31px;
+                padding: 3px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .form-button,.form-button:focus,.form-button:active:focus,.form-button.active:focus,
+            .form-button:active.focus,.form-button.active.focus {
+                box-shadow: none !important;
+            }
+
+            .ra {
+            	display: inline-block;
+            	text-decoration: none;
+            }
+
+            .row.form-group {
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+
+            .card-footer {
+                margin-right: 0px;
+                margin-left: 0px;
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+
+            /******************************************************************************************************
+                                                        CUSTOM CHECKBOX SWITCH
+            ******************************************************************************************************/
+            .custom-checkbox {
+                min-height: 1rem;
+                padding-left: 0;
+                margin-right: 0;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .custom-control-indicator {
+                content: "";
+                display: inline-block;
+                position: relative;
+                width: 30px;
+                height: 10px;
+                background-color: #818181;
+                border-radius: 15px;
+                margin-right: 10px;
+                -webkit-transition: background .3s ease;
+                transition: background .3s ease;
+                vertical-align: middle;
+                margin: 0 16px;
+                box-shadow: none;
+            }
+
+            .custom-checkbox .custom-control-indicator:after {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                background-color: #f1f1f1;
+                border-radius: 21px;
+                box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+                left: -2px;
+                top: -4px;
+                -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+                transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+                background-color: #007bff;
+                background-image: none;
+                box-shadow: none !important;
+            }
+
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+                background-color: #007bff;
+                left: 15px;
+            }
+
+            .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+                box-shadow: none !important;
+            }
+
+            #timer {
+                height : 100%;
+                display: block;
+            }
+
+            #timer-inner {
+                display: block;
+                font-weight: bold;
+                font-size: 4rem;
+            }
+
+            .contenderScore {
+                display: block;
+                font-weight: bold;
+                font-size: 4rem;
+            }
+
+            #consumed {
+                display: block;
+                font-weight: bold;
+                font-size: 2rem;
+            }
+
+            #timeout {
+                display: block;
+            }
+
+            #phase {
+                display: block;
+            }
+
+            #assaults {
+                display: block;
+            }
+
+            .modal-header {
+                font-weight: bold;
+                color: #fff;
+                border-radius: 2px;
+            }
+
+            .modal-backdrop {
+                opacity:0.8 !important;
+            }
+
+            .modal-lg {
+                max-width: 80% !important;
+            }
+
+            .paused-match{
+                background-color:#ffffdd !important;
+            }
+            .done-match{
+                background-color:#EEEEEE !important;
+                color: #AAAAAA !important;
+            }
+
+            table.dataTable tbody tr.selected {
+              background-color: #51acf2 !important;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="modal fade" tabindex="-1" role="dialog" id="newMatchModal">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center bg-primary py-2">
+                <p class="modal-title">Create new match</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color: #FFF">&times;</span>
+                </button>
+              </div>
+              <form id="new-match-form" role="form">
+                  <div class="modal-body">
+                        <div class="row form-group">
+                            <label for="new-match-phase" class="col-sm-6 col-form-label">Phase:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="new-match-phase" value="Standalone Match">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="new-match-time" class="col-sm-6 col-form-label">Time (s):</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="new-match-time" value="180">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="new-match-assaults" class="col-sm-6 col-form-label">Assaults:</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" id="new-match-assaults" value="3">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="new-match-strategy" class="col-sm-6 col-form-label">Strategy:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="new-match-strategy">
+                                  <option value="FIXED">FIXED</option>
+                                  <option value="BEST">BEST</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="new-match-doppio-void" class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6">Doppio voids assault:</div>
+                                    <div class="custom-control custom-checkbox col-auto text-left">
+                                        <input type="checkbox" class="custom-control-input" checked id="new-match-doppio-void">
+                                        <span class="custom-control-indicator"></span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirm-new-match">Create</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="confirm-finish-phase">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center bg-primary py-2">
+                <p class="modal-title">Confirm finish phase</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color: #FFF">&times;</span>
+                </button>
+              </div>
+              <form id="new-match-form" role="form">
+                  <div class="modal-body">
+                        <p>
+                            There are still unfinished matches in the current matches list. Do you really want to end the current phase?
+                        </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirm-finish">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" id="selectMatchModal">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center bg-primary py-2">
+                <h5 class="modal-title">Select next match</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color: #FFF">&times;</span>
+                </button>
+              </div>
+              <form id="new-match-form" role="form">
+                  <div class="modal-body">
+                      <div class="col-12 text-center mb-2">
+                          <strong id="selected-match-label" style="font-size: 1.15rem;">No match currently selected</strong>
+                      </div>
+                      <table id="select-match-table" class="table text-center table-bordered" style="width:100%">
+                          <thead>
+                              <tr>
+                                  <th class='py-2'></th>
+                                  <th class='py-2'>#</th>
+                                  <th class='py-2'>First Contender</th>
+                                  <th class='py-2'>Second Contender</th>
+                                  <th class='py-2'>Status</th>
+                                  <th class='py-2'>Priority</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer">
+                      <div class="col-4 text-right">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary disabled" disable id="select-match">Select</button>
+                          <button type="button" class="btn btn-primary disabled" disable style="display: none;" id="restore-match">Restore</button>
+                      </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="message-notification" class="alert alert-danger fade show m-2 p-3" role="alert">
+          <span id="message-notification-text"></span>
+        </div>
+
+        <div class="container-fluid mt-4 px-1 px-sm-5" style="min-width: 350px;">
+            <div class="card border-secondary mb-3" >
+                <form id="scorekeeping-form" role="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="row px-1">
+                                    <div class="col-12">
+                                        <div class="row mb-2 card">
+                                            <div class="col-12 text-center mb-2 card-header py-2">
+                                                <strong class="mt-1">Left contender</strong>
+                                                <button type="button" id="edit-left-contender" class="btn btn-outline-primary btn-rounded need-match disabled my-0 mx-0 py-0 px-1 float-right" data-toggle="tooltip" disabled data-placement="right" title="Edit left contender data"><i class="fas fa-edit"></i></button>
+                                            </div>
+                                            <div class="col-12 text-center mb-2" style="clear: both;">
+                                                <span id="leftContenderName">Name</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <span id="leftContenderBattlename">Battlename</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <span id="leftContenderAcademy">Academy</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <span id="leftContenderSchool">School</span>
+                                            </div>
+                                            <div class="col-12 text-center form-buttons mb-2">
+                                                <div class="btn-group-toggle btn-group" id="leftContenderClosedForms" data-toggle="buttons">
+                                                    <label class="btn btn-outline-primary form-button form disabled " data-toggle="tooltip" data-placement="top" title="Form I" data-form="1">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form II" data-form="2">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form Y" data-form="Y">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form III" data-form="3">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form IV" data-form="4">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form V" data-form="5">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VI" data-form="6">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VII" data-form="7">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VIII" data-form="8">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form IX" data-form="9">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <span class="contenderScore" id="leftContenderScore">0</span>
+                                                <span>Score</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <button type="button" id="plus-left-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" disabled alt="Increment left contender score" data-toggle="tooltip" data-placement="bottom" title="Increment left contender score"><i class="fas fa-plus-circle"></i></button>
+                                                <button type="button" id="minus-left-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" disabled alt="Decrement left contender score" data-toggle="tooltip" data-placement="bottom" title="Decrement left contender score"><i class="fas fa-minus-circle"></i></button>
+                                            </div>
+                                            <!--
+                                            <div class="col-12 text-center mb-2">
+                                                <span class="contenderScore" id="rightContenderScore">0</span>
+                                                <span>Penalties</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="far fa-square-full"></i><span id="left-white-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-left-white-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give white card to left contender" data-toggle="tooltip" data-placement="bottom" title="Give white card to left contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-left-white-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove white card from left contender" data-toggle="tooltip" data-placement="bottom" title="Remove white card from left contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: yellow;" class="fas fa-square-full"></i><span id="left-yellow-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-left-yellow-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give yellow card to left contender" data-toggle="tooltip" data-placement="bottom" title="Give yellow card to left contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-left-yellow-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove yellow card from left contender" data-toggle="tooltip" data-placement="bottom" title="Remove yellow card from left contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: red;" class="fas fa-square-full"></i><span id="left-red-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-left-red-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give yellow card to left contender" data-toggle="tooltip" data-placement="bottom" title="Give yellow card to left contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-left-red-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove yellow card from left contender" data-toggle="tooltip" data-placement="bottom" title="Remove yellow card from left contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: black;" class="fas fa-square-full"></i><span id="left-black-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-left-black-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give black card to left contender" data-toggle="tooltip" data-placement="bottom" title="Give black card to left contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-left-black-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove black card from left contender" data-toggle="tooltip" data-placement="bottom" title="Remove black card from left contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="row mb-2 card">
+                                    <div class="card-header text-center py-0">
+                                      <strong>Status</strong>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <div class="row">
+
+                                            <i id="phase" class="col-5"></i>
+                                            <span class="col-3"><i id="server-connection-led" class="fas fa-circle down"></i><i id="server-connection-label">   Server disconnected</i></span>
+                                            <span class="col-4"><i id="overlay-connection-led" class="fas fa-circle down"></i><i id="overlay-connection-label">   Overlay disconnected</i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center mb-2">
+                                        <div class="row">
+                                            <div class="col-8 text-center">
+                                                <div>
+                                                    <video id='stream-video' class='video-js' width="100%" height="100%" style="margin: auto;">
+                                                        <!--<source src='rtmp://192.168.1.88:1935/live/test' type='rtmp/mp4'>-->
+                                                    </video>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-center mb-2">
+                                                <div class="row">
+                                                    <button type="button" id="prepare-button" class="col-11 my-1 mr-2 btn btn-primary btn-rounded need-match need-complete disabled" disabled data-toggle="tooltip" data-placement="top" title="Show the fight overlay for the match">Prepare</button>
+                                                </div>
+                                                <div class="row">
+                                                    <button type="button" id="finish-button" class="col-11 my-1 mr-2 btn btn-primary btn-rounded need-match need-complete disabled" disabled data-placement="top" data-toggle="tooltip" title="Terminates the current match hiding the fight overlay">Finish</button>
+                                                </div>
+                                                <div class="row">
+                                                    <button type="button" id="pause-button" class="col-11 my-1 mr-2 btn btn-primary btn-rounded need-match disabled" disabled data-placement="top" data-toggle="tooltip" title="Pause the current fight and moves to the next">Pause</button>
+                                                </div>
+                                                <div class="row">
+                                                    <button type="button" id="update-button" class="col-11 my-1 mr-2 btn btn-primary btn-rounded need-match need-complete disabled" disabled data-placement="top" title="Update match info displayed in the fight overlay">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 pl-0 pr-1">
+                                        <div class="mb-2 card px-0" style="height: 100%;">
+                                            <div class="card-header text-center py-2 px-1">
+                                                <strong>Timer</strong>
+                                                <button type="button" id="edit-timer" class="btn btn-outline-primary btn-rounded need-match disabled my-0 mx-0 py-0 px-1 float-right" data-toggle="tooltip" disabled data-placement="right" title="Edit timer data"><i class="fas fa-edit"></i></button>
+                                            </div>
+                                            <div class="text-center mb-2">
+                                                <div>
+                                                    <div id="timer">
+                                                        <span id="timer-inner" style="display: inline;">
+                                                            00:00
+                                                        </span>
+                                                        <span id="timeout" style="display: inline;">
+                                                            / 00:00
+                                                        </span>
+                                                    </div>
+                                                    <button type="button" id="timer-control-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" disabled alt="Start fight timer" data-toggle="tooltip" data-placement="bottom" title="Start/stop fight timer"><i class="fas fa-stopwatch"></i><span class="collapse-label"> Start Timer</span></button>
+                                                    <button type="button" id="timer-update-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" disabled alt="Update fight timer" data-toggle="tooltip" data-placement="bottom" title="Update fight timer"><i class="fas fa-sync-alt"></i><span> Update Timer</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pr-0 pl-1">
+                                        <div class="mb-2 card px-0" style="height: 100%;">
+                                            <div class="card-header text-center py-2">
+                                                <strong>Assaults</strong>
+                                            </div>
+                                            <div class="text-center mb-2">
+                                                <div>
+                                                    <span id="assaults">
+                                                    </span>
+                                                    <span id="doppioVoids">
+                                                    </span>
+                                                    <span id="consumed">
+                                                        0
+                                                    </span>
+                                                    <span>Consumed assaults</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <button type="button" id="increase-assaults-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" data-toggle="tooltip" disabled data-placement="bottom" title="Increase the number of consumed assaults"><i class="fas fa-plus-circle"></i></button>
+                                                <button type="button" id="decrease-assaults-button" class="btn btn-primary btn-rounded need-match need-complete need-overlay disabled" data-toggle="tooltip" disabled data-placement="bottom" title="Decrement consumed assaults"><i class="fas fa-minus-circle"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="row px-1">
+                                    <div class="col-12">
+                                        <div class="row mb-2 card">
+                                            <div class="col-12 text-center mb-2 card-header py-2">
+                                                <strong>Right contender</strong>
+                                                <button type="button" id="edit-right-contender" class="btn btn-outline-primary btn-rounded need-match disabled my-0 mx-0 py-0 px-1 float-right" data-toggle="tooltip" disabled data-placement="left" title="Edit right contender data"><i class="fas fa-edit"></i></button>
+                                            </div>
+                                            <div>
+                                                <div class="col-12 text-center mb-2">
+                                                    <span id="rightContenderName">Name</span>
+                                                </div>
+                                                <div class="col-12 text-center mb-2">
+                                                    <span id="rightContenderBattlename">Battlename</span>
+                                                </div>
+                                                <div class="col-12 text-center mb-2">
+                                                    <span id="rightContenderAcademy">Academy</span>
+                                                </div>
+                                                <div class="col-12 text-center mb-2">
+                                                    <span id="rightContenderSchool">School</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center form-buttons">
+                                                <div class="btn-group-toggle btn-group" id="rightContenderClosedForms" data-toggle="buttons">
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form I" data-form="1">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form II" data-form="2">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form Y" data-form="Y">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form III" data-form="3">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form IV" data-form="4">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form V" data-form="5">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VI" data-form="6">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VII" data-form="7">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form VIII" data-form="8">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                    <label class="btn btn-outline-primary form-button form disabled" data-toggle="tooltip" data-placement="top" title="Form IX" data-form="9">
+                                                        <input type="checkbox" disabled autocomplete="off">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <span class="contenderScore" id="rightContenderScore">0</span>
+                                                <span>Score</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <button type="button" id="plus-right-button" class="btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Increment right contender score" data-toggle="tooltip" data-placement="bottom" title="Increment right contender score"><i class="fas fa-plus-circle"></i></button>
+                                                <button type="button" id="minus-right-button" class="btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Decrement right contender score" data-toggle="tooltip" data-placement="bottom" title="Decrement right contender score"><i class="fas fa-minus-circle"></i></button>
+                                            </div>
+                                            <!--
+                                            <div class="col-12 text-center mb-2">
+                                                <span class="contenderScore" id="rightContenderScore">0</span>
+                                                <span>Penalties</span>
+                                            </div>
+                                            <div class="col-12 text-center mb-2">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="far fa-square-full"></i><span id="right-white-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-right-white-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give white card to right contender" data-toggle="tooltip" data-placement="bottom" title="Give white card to right contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-right-white-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove white card from right contender" data-toggle="tooltip" data-placement="bottom" title="Remove white card from right contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: yellow;" class="fas fa-square-full"></i><span id="right-yellow-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-right-yellow-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give yellow card to right contender" data-toggle="tooltip" data-placement="bottom" title="Give yellow card to right contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-right-yellow-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove yellow card from right contender" data-toggle="tooltip" data-placement="bottom" title="Remove yellow card from right contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: red;" class="fas fa-square-full"></i><span id="right-red-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-right-red-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give yellow card to right contender" data-toggle="tooltip" data-placement="bottom" title="Give yellow card to right contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-right-red-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove yellow card from right contender" data-toggle="tooltip" data-placement="bottom" title="Remove yellow card from right contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i style="color: black;" class="fas fa-square-full"></i><span id="right-black-cards" style="display: block;">0</span>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" id="plus-right-black-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Give black card to right contender" data-toggle="tooltip" data-placement="bottom" title="Give black card to right contender"><i class="fas fa-plus-circle"></i></button>
+                                                            <button type="button" id="minus-right-black-card-button" class="my-1 btn btn-primary btn-rounded need-complete need-match need-overlay disabled" disabled alt="Remove black card from right contender" data-toggle="tooltip" data-placement="bottom" title="Remove black card from right contender"><i class="fas fa-minus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding-top: 5px">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <strong>Match controls</strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button type="button" id="new-match-button" class="btn btn-primary btn-rounded" data-placement="top" title="Initialize a new match" data-tooltip="tooltip">New Match</button>
+                                <button type="button" id="get-matches-button" class="btn btn-primary btn-rounded" data-placement="top" title="Get next batch of matches from server" data-toggle="tooltip">Get Matches</button>
+                                <button type="button" id="change-match" class="btn btn-primary btn-rounded disabled" disabled  data-placement="top" data-toggle="tooltip" title="Select a new match from the list of current matches">Select Match</button>
+                                <button type="button" id="manage-match" class="btn btn-primary btn-rounded disabled" disabled  data-placement="top" data-toggle="tooltip" title="Restore status of a match">Restore Match</button>
+                                <button type="button" id="next-phase" class="btn btn-primary btn-rounded need-match disabled" disabled  data-placement="top" data-toggle="tooltip" title="Move to the next phase">Next Phase</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container-fluid mt-1 mt-sm-5 px-1 px-sm-5" style="min-width: 350px;">
+            <div id="accordion">
+                <div class="card border-secondary mb-3">
+                <div class="card-header" id="specificationHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSpecification" aria-expanded="true" aria-controls="collapseSpecification">
+                            <i class="fas fa-cog" style="margin-right: 10px;"></i>Settings
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseSpecification" class="collapse" aria-labelledby="specificationHeading">
+                    <div class="card-body">
+                        <form id="specification-form" role="form">
+                            <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                <div class="col-sm-12">
+                                    <strong>Server</strong>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row form-group">
+                                <label for="spreadsheet-id" class="col-sm-4 col-form-label">Server address: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="server-address" value="192.168.0.2:3000">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" id="connect" class="btn btn-primary btn-rounded"  data-placement="top" data-toggle="tooltip" title="Connect to server">Connect</button>
+                                </div>
+                            </div>
+                            <div class="row form-group" style="margin-bottom: 10px; margin-top: 10px;">
+                                <div class="col-sm-12">
+                                    <strong>RTMP Stream</strong>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row form-group">
+                                <label for="spreadsheet-id" class="col-sm-4 col-form-label">Stream URL: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="rtmp-server-address" value="rtmp://192.168.1.88:1935/live/test">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" id="load-stream" class="btn btn-primary btn-rounded" data-placement="top" data-toggle="tooltip" title="Reload stream">Reload</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="popper.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="moment.js"></script>
+        <script src="TweenMax.min.js"></script>
+        <script src="countimer2.js"></script>
+        <script src="tempusdominus-bootstrap-4.min.js"></script>
+        <script src="jquery.dataTables.min.js"></script>
+        <script src="dataTables.bootstrap4.min.js"></script>
+        <script src="dataTables.select.min.js"></script>
+        <script src="video.js"></script>
+        <script src="videojs-flash.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+
+                let videoURL = $('#rtmp-server-address').val();
+                var videoPlayer = videojs('stream-video', {autoplay: true, responsive: true, aspectRatio:"16:9"});
+                videoPlayer.src({
+                  type: 'rtmp/mp4',
+                  src: videoURL
+                });
+
+                var matchSelected = -1;
+                var matchesTable = $('#select-match-table').DataTable({
+                    columnDefs: [ {
+                        orderable: false,
+                        className: 'select-checkbox',
+                        targets:   0
+                    }, {
+                        visible: false,
+                        targets: 5
+                    }, {
+                        orderData: [ 5, 2 ],
+                        targets: 2
+                    }, {
+                        orderData: [ 5, 3 ],
+                        targets: 3
+                    }, {
+                        orderData: [ 5, 1 ],
+                        targets: 1
+                    } ],
+                    stripeClasses: [],
+                    lengthMenu: [ 8, 16, 32, 64 ],
+                    pageLength: 8,
+                    rowCallback: function(row, data, index) {
+
+                        // Style cells
+                        $('td', row).addClass('py-2');
+
+                        // Style paused and done matches rows
+                        if(parseInt(data[5]) == 3 ) {
+                            $(row).addClass('done-match');
+                            //$('td', row).removeClass('select-checkbox');
+                        }
+                        else if(parseInt(data[5]) == 2) {
+                            $(row).addClass('paused-match');
+                        }
+                    },
+                    select: {
+                        style:    'os',
+                        selector: 'td'
+                    },
+                    order: [[ 1, 'asc' ]]
+                }).on('user-select', function (e, dt, type, cell, originalEvent) {
+                    var row = dt.row(cell.index().row);
+                    var data = row.data();
+                    if(parseInt(data[5]) == 3) {
+                        //e.preventDefault();
+                    }
+                    if(matchSelected < 0 || matchSelected != row.index()) {
+                        $('#select-match').prop('disabled', false).removeClass('disabled');
+                        $('#restore-match').prop('disabled', false).removeClass('disabled');
+                        $('#selected-match-label').text(data[2] + " vs. " + data[3]);
+                    } else if(!row.hasClass('selected')){
+                        $('#select-match').prop('disabled', true).addClass('disabled');
+                        $('#restore-match').prop('disabled', true).addClass('disabled');
+                        $('#selected-match-label').text("No match currently selected");
+                    }
+                    matchSelected = row.index();
+                }).on('select', function (e, dt, type, indexes) {
+                    if(type !== "row" && indexes.length !== 1) return;
+                    var row = dt.row(indexes[0]);
+                    var data = row.data();
+                    if(parseInt(data[5]) == 3) {
+                        //e.preventDefault();
+                    }
+                    if(matchSelected >= 0 || matchSelected != row.index()) {
+                        $('#select-match').prop('disabled', false).removeClass('disabled');
+                        $('#restore-match').prop('disabled', false).removeClass('disabled');
+                        $('#selected-match-label').text(data[2] + " vs. " + data[3]);
+                    } else if(!$(row).hasClass('selected')) {
+                        $('#select-match').prop('disabled', true).addClass('disabled');
+                        $('#restore-match').prop('disabled', true).addClass('disabled');
+                        $('#selected-match-label').text("No match currently selected");
+                    }
+                    matchSelected = row.index();
+                });
+
+                function populateMatchSelectionTable(matches, athletes) {
+
+                    // Clear table
+                    $('#select-match-table tbody').html('');
+
+                    // Add new matches rows
+                    currentMatches.forEach((match, index) => {
+                        let id = index+1;
+                        let firstContender = match.match.firstContender.contender;
+                        let secondContender = match.match.secondContender.contender;
+                        firstContender += " (" + athletes[firstContender].forms.join('') + ")";
+                        secondContender += " (" + athletes[secondContender].forms.join('') + ")";
+
+                        matchesTable.rows.add([['', id, firstContender, secondContender, 'Pending', '1']]);
+                    });
+
+                    // Redraw table
+                    matchesTable.draw();
+
+                    // Select first row
+                    if(matchesTable.rows().length > 0) {
+                        matchesTable.row(0).select();
+                        matchSelected = 0;
+                    }
+                }
+
+                // Initialize tooltips
+                $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" , delay : {show : 1000}});
+                $('[data-tooltip="tooltip"]').tooltip({ trigger: "hover", delay : {show : 1000} });
+
+                // Manage timer
+                var isTimerStarted = false;
+                var isTimeElapsed = false;
+                var isTimerPaused = true;
+                var timeout = 0;
+                var elapsedSec = 0;
+                var elapsedMin = 0;
+
+                function startOrStopTimer() {
+
+                    // Change button appearance & state
+                    var label = $('.collapse-label');
+                    if(isTimerPaused) {
+                        label.text(" Stop Timer");
+                    } else {
+                        label.text(" Start Timer");
+                    }
+                    isTimerPaused = ! isTimerPaused;
+
+                    // Send message
+                    if(!isTimerPaused) {
+                        $.ajax({
+                            url: '/startFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : arena
+                            }),
+                            success: function() {
+                                startTimer();
+                            }
+                        });
+                        $('#edit-timer').addClass('disabled').prop('disabled', true);
+                        $('#timer-update-button').addClass('disabled').prop('disabled', true);
+                    } else {
+                        $.ajax({
+                            url: '/pauseFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : arena
+                            }),
+                            success: function() {
+                                stopTimer();
+                            }
+                        });
+                        $('#edit-timer').removeClass('disabled').prop('disabled', false);
+                        $('#timer-update-button').removeClass('disabled').prop('disabled', false);
+                    }
+                }
+
+                function updateTimer() {
+
+                    // Get current timer value
+                    const timer = $('#timer-inner').text();
+
+                    // Send message
+                    $.ajax({
+                        url: '/updateFightTimer',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "timer" : timer
+                        })
+                    });
+                }
+
+                function clearTimer(propagate = false) {
+
+                    // Stop timer
+                    stopTimer();
+
+                    // Clear timer
+                    setTimer(0,0);
+
+                    // Stop and clear fight overlay timer
+                    if(propagate) {
+                        $.ajax({
+                            url: '/clearFightTimer',
+                            type: 'POST',
+                            contentType: "application/json",
+                            handleAs: "json",
+                            data: JSON.stringify({
+                                "arena" : arena
+                            })
+                        });
+                    }
+                }
+
+                function startTimer(){
+                    if(!isTimerStarted) {
+                        isTimerStarted = true;
+                        console.log($('#timer').countimer('current'));
+                        $('#timer').countimer('start');
+                    } else {
+                        resumeTimer();
+                    }
+                }
+
+                function stopTimer(){
+                    $('#timer').countimer('stop');
+                }
+
+                function resumeTimer(){
+                    $('#timer').countimer('resume');
+                }
+
+                function setTimer(min, secs) {
+                    $('#timer-inner').text(min.toString().padStart(2, '0') + ":" + secs.toString().padStart(2, '0'));
+                }
+
+                function initTimer(initMins = 0, initSecs = 0) {
+
+                    console.log(initMins, initSecs);
+
+                    // Initialize timer
+                    $('#timer').countimer({
+                        displayMode : 3,
+                        useHours : false,
+                        autoStart : false,
+                        enableEvents: true,
+                        initMinutes: initMins,
+                        initSeconds: initSecs
+                    }).on('second', function(evt, time){
+                        var elapsed = time.original.minutes*60 + time.original.seconds;
+                        elapsedSec = time.original.seconds;
+                        elapsedMin = time.original.minutes;
+                        if(elapsed >= timeout) {
+
+                            // Set timer booming
+                            var tl = new TimelineMax();
+                            tl.to(innerTimer, 0.2, {scale: 1.2, transformOrigin: "50% 50%", autoAlpha: 0})
+                            .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                            // Stop timer
+                            stopTimer();
+                            isTimeElapsed = true;
+
+                            // Send pause fight timer to overlay
+                            $.ajax({
+                                url: '/pauseFightTimer',
+                                type: 'POST',
+                                contentType: "application/json",
+                                handleAs: "json",
+                                data: JSON.stringify({
+                                    "arena" : arena
+                                }),
+                                success: function() {
+                                }
+                            });
+
+                            // Disable timer buttons
+                            $('#timer-control-button').addClass('disabled');
+                            $('#timer-update-button').addClass('disabled');
+
+                        } else if(elapsed >= timeout - 5) {
+
+                            // Set timer yellow
+                            var innerTimer = $('#timer-inner');
+                            innerTimer.css("color", "red");
+
+                            // Set timer booming
+                            var tl = new TimelineMax();
+                            tl.to(innerTimer, 0.2, {scale: 1.2, transformOrigin: "50% 50%", autoAlpha: 0})
+                            .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                        } else if(elapsed >= timeout - 10) {
+
+                            // Set timer yellow
+                            var innerTimer = $('#timer-inner');
+                            innerTimer.css("color", "orange");
+
+                            // Set timer booming
+                            var tl = new TimelineMax();
+                            tl.to(innerTimer, 0.2, {scale: 1.1, transformOrigin: "50% 50%", autoAlpha: 0})
+                            .to(innerTimer, 0.2, {scale: 1, transformOrigin: "50% 50%", autoAlpha: 1});
+
+                        }
+                    });
+                }
+                initTimer();
+
+                
+
+                function toggleFormBox(formBox){
+
+                    // Toggle underlying checkbox checked property
+                    var $checkBox = formBox.find('[type=checkbox]');
+                    $checkBox.prop('checked',!$checkBox.prop('checked')).change();
+
+                    // Invert form icon color
+                    // var isChecked = $checkBox.is(':checked');
+                    // if(isChecked) {
+                    //     formBox.addClass("present");
+                    //     formBox.css("background-color", "#007bff");
+                    //     formBox.css("opacity", "1");
+                    //     formBox.css("border-color", "#007bff");
+                    //     formBox.css("background-image", "url(imgs/f" + formBox.data('form') + "b.svg)");
+                    // } else {
+                    //     formBox.removeClass("present");
+                    //     formBox.css("background-color", "#ffffff");
+                    //     formBox.css("opacity", "1");
+                    //     formBox.css("border-color", "#007bff");
+                    //     formBox.css("background-image", "url(imgs/f" + formBox.data('form') + ".svg)");
+                    // }
+                }
+
+                function clearFormBoxes() {
+                    var formBoxes = $('.form[data-form]');
+                    formBoxes.each(function(index, value) {
+                        var checkBox = $(this).find('[type=checkbox]');
+                        checkBox.prop('checked', false).change();
+                        // $(this).removeClass("present");
+                        // $(this).css("background-color", "#ffffff");
+                        // $(this).css("background-image", "url(imgs/f" + $(this).data('form') + ".svg)");
+                    });
+                }
+
+                $('.form[data-form]').each(function(index, value) {
+
+                    // Set checkbox buttons form icons background images
+                    $(this).css("background-image", "url(imgs/f" + $(this).data('form') + ".svg)");
+                    $(this).css("background-size", "25px 25px");
+                    $(this).find('[type=checkbox]').change(function() {
+
+                        // Invert form icon color
+                        var formBox = $(this).parent('label');
+                        var isChecked = $(this).is(':checked');
+                        if(isChecked) {
+                            formBox.addClass("present");
+                            formBox.css("background-color", "#007bff");
+                            formBox.css("opacity", "1");
+                            formBox.css("border-color", "#007bff");
+                            formBox.css("background-image", "url(imgs/f" + formBox.data('form') + "b.svg)");
+                        } else {
+                            formBox.removeClass("present");
+                            formBox.css("background-color", "#ffffff");
+                            formBox.css("opacity", "1");
+                            formBox.css("border-color", "#007bff");
+                            formBox.css("background-image", "url(imgs/f" + formBox.data('form') + ".svg)");
+                        }
+                    })
+                });
+
+                // Get contender selected forms
+                function getSelectedForms(contenderForms) {
+                    let contenderFormsArray = [];
+                    contenderForms.find('.form.present').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        contenderFormsArray.push(formId);
+                    });
+                    return contenderFormsArray;
+                }
+
+                // Function to get URL parameter
+                var getUrlParameter = function getUrlParameter(sParam) {
+                    var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
+
+                    for (i = 0; i < sURLVariables.length; i++) {
+                        sParameterName = sURLVariables[i].split('=');
+
+                        if (sParameterName[0] === sParam) {
+                            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                        }
+                    }
+                };
+
+                function newEmptyMatch() {
+                    return {
+                        isBye : false,
+                        isComplete : false,
+                        id : 0,
+                        firstContender : {
+                            contender : "",
+                            score : 0,
+                            style : 0.0,
+                            stylePartials : []
+                        },
+                        secondContender : {
+                            contender : "",
+                            score : 0,
+                            style : 0.0,
+                            stylePartials : []
+                        },
+                        time : 0,
+                        assaults : 0,
+                        consumed : 0,
+                        strategy : "",
+                        doppioVoid : null,
+                        arena : getUrlParameter("arena")
+                    }
+                }
+
+                function newContender(name = "Name", academy = "Academy", school = "School", battlename = "Battlename", forms = []) {
+                    return {
+                        name,
+                        academy,
+                        school,
+                        battlename,
+                        forms
+                    }
+                }
+
+                // Clears the current match
+                function clearMatch() {
+
+                    // Clear current match index
+                    currentMatch = -1;
+
+                    // Reinitialize contenders info
+                    $('#leftContenderName').text("Name");
+                    $('#rightContenderName').text("Name");
+                    $('#leftContenderSchool').text("School");
+                    $('#rightContenderSchool').text("School");
+                    $('#leftContenderAcademy').text("Academy");
+                    $('#rightContenderAcademy').text("Academy");
+                    clearFormBoxes();
+
+                    // Reinitialize match info
+                    $('#assaults').text("");
+                    $('#doppioVoids').text("");
+                    $('#leftContenderScore').text(0);
+                    $('#rightContenderScore').text(0);
+                    $('#consumed').text(0);
+                    timeout = 0;
+                    elapsedSec = 0;
+                    elapsedMin = 0;
+                    isTimeElapsed = false;
+                    isTimerStarted = false;
+                    isTimerPaused = true;
+                    $('#timer-inner').css("color", "black");
+                    $('#timeout').text("00:00");
+                    $('.collapse-label').text(" Start Timer");
+                    setTimer(0, 0);
+                    updateButtonsState();
+                    isOverlayInitialized = false;
+                }
+
+                function updateButtonsState() {
+
+                    // Enable all buttons
+                    $('#scorekeeping-form').find('button').not('#get-matches-button').removeClass('disabled').prop('disabled', false);
+
+                    // If no current match is set disable all match-dependent buttons
+                    if(currentMatch < 0) {
+                        $('#scorekeeping-form').find('button.need-match').addClass('disabled').prop('disabled', true);
+                    }
+
+                    // Otherwise if match is available but its is not complete disable all buttons that need a complete match
+                    else {
+
+                        if(!currentMatches[currentMatch].match.isComplete) {
+                            $('#scorekeeping-form').find('button.need-complete').addClass('disabled').prop('disabled', true);
+                        }
+                        if(currentMatches[currentMatch].isStandalone) {
+                            $('#pause-button').find('button.need-complete').addClass('disabled').prop('disabled', true);
+                        }
+                    }
+
+                    // Disable all buttons that need an initialized overlay
+                    if(!isOverlayInitialized) {
+                        $('#scorekeeping-form').find('button.need-overlay').addClass('disabled').prop('disabled', true);
+                    }
+                }
+
+                function updatePhaseIndicator() {
+                    switch(status) {
+                        case "WAITING":
+                            $('#phase').text('No loaded matches');
+                            break;
+                        case "STARTED":
+                            $('#phase').text(currentPhase + ", " + numFinishedMatches + "/" + currentMatches.length + " matches");
+                            break;
+                        case "DONE":
+                            $('#phase').text(currentPhase + ", " + numFinishedMatches + "/" + currentMatches.length + " matches. Move to next phase.");
+                            break;
+                        case "STOP":
+                            $('#phase').text('No more phases to live stream for this arena');
+                            break;
+                    }
+                }
+
+                function updateOverlayConnectionStatus(){
+                    if(isOverlayConnected) {
+                        $('#overlay-connection-led').removeClass('down').addClass('up');
+                        $('#overlay-connection-label').text('   Overlay connected');
+                    } else {
+                        $('#overlay-connection-led').removeClass('up').addClass('down');
+                        $('#overlay-connection-label').text('   Overlay disconnected');
+                    }
+                }
+
+                function updateServerConnectionStatus(){
+                    if(isServerConnected) {
+                        $('#server-connection-led').removeClass('down').addClass('up');
+                        $('#server-connection-label').text('   Server connected');
+                    } else {
+                        $('#server-connection-led').removeClass('up').addClass('down');
+                        $('#server-connection-label').text('   Server disconnected');
+                    }
+                }
+
+                function clearStateVariables() {
+                    currentMatches = [];
+                    currentAthletes = {};
+                    currentPhase = "";
+                    currentMatch = -1;
+                    numFinishedMatches = 0;
+                }
+
+                function displayCurrentMatch() {
+
+                    // Check valid match
+                    if(currentMatch < 0 || currentMatch > currentMatches.length-1) return;
+
+                    // Get current match info
+                    var match = currentMatches[currentMatch].match;
+                    var firstContender = currentAthletes[match.firstContender.contender];
+                    var secondContender = currentAthletes[match.secondContender.contender];
+                    var assaults = match.assaults;
+                    var time = match.time;
+                    var strategy = match.strategy;
+                    var doppioVoid = match.doppioVoid;
+
+                    // Stop timer
+                    if(!isTimerPaused) startOrStopTimer();
+
+                    // Display current match information
+                    clearFormBoxes();
+                    if(match.isComplete){
+                        $('#leftContenderName').text(firstContender.name);
+                        $('#rightContenderName').text(secondContender.name);
+                        $('#leftContenderSchool').text(firstContender.school);
+                        $('#rightContenderSchool').text(secondContender.school);
+                        $('#leftContenderAcademy').text(firstContender.academy);
+                        $('#rightContenderAcademy').text(secondContender.academy);
+                        firstContender.forms.forEach(function (form) {
+                            var formBox = $('#leftContenderClosedForms .form[data-form=' + form + ']');
+                            toggleFormBox(formBox);
+                        });
+                        secondContender.forms.forEach(function (form) {
+                            var formBox = $('#rightContenderClosedForms .form[data-form=' + form + ']');
+                            toggleFormBox(formBox);
+                        });
+                    } else {
+                        $('#leftContenderName').text("TBA");
+                        $('#rightContenderName').text("TBA");
+                    }
+                    $('#assaults').text(
+                        strategy === "FIXED" ?
+                            assaults + " assaults fixed" :
+                                strategy === "BEST" ? "Best out of " + assaults + " assaults" :
+                                    "");
+                    $('#doppioVoids').text(
+                        doppioVoid ? "DOPPIO counts as void" : "DOPPIO consumes the assault"
+                    );
+
+                    // Reset scores
+                    $('#leftContenderScore').text(0);
+                    $('#rightContenderScore').text(0);
+                    $('#consumed').text(0);
+
+                    // Reset timer and set timeout
+                    timeout = time;
+                    elapsedSed = 0;
+                    elapsedMin = 0;
+                    isTimeElapsed = false;
+                    isTimerStarted = false;
+                    isTimerPaused = true;
+                    $('#timer-inner').css("color", "black");
+                    if(timeout > 0) {
+                        var min = Math.floor(timeout/60);
+                        var secs = timeout%60;
+                        $('#timeout').text('/ ' + min.toString().padStart(2, '0') + ":" + secs.toString().padStart(2, '0'))
+                        setTimer(0, 0);
+                    } else {
+                        $('#timeout').text("/ ∞");
+                    }
+
+                    // Update timer for paused matches
+                    if(currentMatches[currentMatch].isPaused) {
+                        setTimer(currentMatches[currentMatch].elapsedMin, currentMatches[currentMatch].elapsedSec);
+                        $('#leftContenderScore').text(currentMatches[currentMatch].leftScore);
+                        $('#rightContenderScore').text(currentMatches[currentMatch].rightScore);
+                        $('#consumed').text(currentMatches[currentMatch].assaults);
+                    }
+
+                    // Update buttons
+                    updateButtonsState();
+                }
+
+
+                function handleSocketMessage(e) {
+
+                    // Get message data
+                    var json = JSON.parse(e.data);
+                    var message = json['message'];
+                    var data = json['data'];
+
+                    // Handle update messages
+                    switch(message) {
+
+                        case 'overlayConnected':
+                            isOverlayConnected = true;
+                            updateOverlayConnectionStatus();
+                            break;
+
+                        case 'overlayDisconnected':
+                            isOverlayConnected = false;
+                            updateOverlayConnectionStatus();
+                            break;
+
+                        case "matchesUpdate":
+
+                            // Clear state variables
+                            clearStateVariables();
+
+                            // Clear matches table
+                            matchesTable.clear();
+
+                            // Get matches
+                            var matches = data["matches"];
+                            if(!matches) {
+                                status = "STOP";
+                                updatePhaseIndicator();
+                                break;
+                            }
+
+                            // Update status
+                            status = "STARTED";
+                            $('#change-match').prop('disabled', false).removeClass('disabled');
+
+                            // Update state variables
+                            matches.forEach((match) => {
+                                match.status = "SCHEDULED";
+                                currentMatches.push(match);
+                            });
+                            currentAthletes = data["athletes"];
+                            currentPhase = data["phase"];
+
+                            // Update phase indicator
+                            updatePhaseIndicator();
+
+                            // Populate select next match dialog
+                            populateMatchSelectionTable(currentMatches, currentAthletes);
+
+                            // Open up select next match dialog
+                            $('#restore-match').css('display', 'none');
+                            $('#select-match').css('display', 'inline');
+                            $('#selectMatchModal').modal('show');
+                            break;
+
+                        case "updateMatch":
+
+                            // Get ne match info
+                            var match = data["match"];
+                            var firstContender = data["firstContender"];
+                            var secondContender = data["secondContender"];
+
+                            // Set updated match information
+                            currentMatches[currentMatch].match = match;
+                            currentAthletes[firstContender.name] = firstContender;
+                            currentAthletes[secondContender.name]  = secondContender;
+
+                            // Display new match info if current match
+                            if(match.id === currentMatch) {
+                                displayCurrentMatch();
+                            }
+                            break;
+                    }
+                }
+
+                function handleSocketError(e) {
+                    isServerConnected = false;
+                    updateServerConnectionStatus();
+                }
+
+                function handleSocketClose(e) {
+                    isServerConnected = false;
+                    updateServerConnectionStatus();
+                }
+
+                function handleSocketOpen(e) {
+                    isServerConnected = true;
+                    updateServerConnectionStatus();
+                }
+
+                // Get monitored arena was specified
+                var currentFirstContender = null;
+                var currentSecondContender = null;
+                var currentTime = 0;
+                var currentAssaults = 0;
+                var currentDoppios = 0;
+                var currentStrategy = "";
+                var currentDoppioVoid = null;
+                var arena = getUrlParameter("arena");
+                var isServerConnected = false;
+                var isOverlayConnected = false;
+                var isOverlayInitialized = false;
+                var status = "WAITING";
+
+
+                // State variables
+                var currentMatch = -1;
+                var currentMatches = [];
+                var currentAthletes = {};
+                var currentPhase = "";
+                var numFinishedMatches = 0;
+                var socket = null;
+                var handleMessage;
+
+                // Connect to server
+                if(arena) {
+
+                    // Connect to server through a web socket
+                    let server = $('#server-address').val();
+                    socket = new WebSocket('ws://' + server + '/registerScorekeeper?arena=' + arena);
+
+                    // Update server connection status
+                    socket.onopen = handleSocketOpen;
+                    socket.onclose =  handleSocketClose;
+                    socket.onerror =  handleSocketError;
+
+                    // Set web socket message callback
+                    socket.onmessage = handleSocketMessage;
+                }
+
+                updatePhaseIndicator();
+
+                /*********************************************************************************************************************
+                                                                SCOREKEEPER CONTROLS
+                *********************************************************************************************************************/
+
+                // Manage the "prepare" button action
+                $("#prepare-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Get left contender forms ids
+                    var leftContenderForms = [];
+                    $('#leftContenderClosedForms').find('.form.present').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        leftContenderForms.push(formId);
+                    });
+
+                    // Get right contender forms ids
+                    var rightContenderForms = [];
+                    $('#rightContenderClosedForms').find('.form.present').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        rightContenderForms.push(formId);
+                    });
+
+                    // Get start animation switch value
+                    var useStartAnimation = true;
+
+                    // Get match info
+                    var elapsedSec = 0;
+                    var elapsedMin = 0;
+                    var leftScore = 0;
+                    var rightScore = 0;
+                    var assaults = 0;
+                    if(currentMatches[currentMatch].isPaused) {
+                        elapsedSec = currentMatches[currentMatch].elapsedSec;
+                        elapsedMin = currentMatches[currentMatch].elapsedMin;
+                        leftScore = currentMatches[currentMatch].leftScore;
+                        rightScore = currentMatches[currentMatch].rightScore;
+                        assaults = currentMatches[currentMatch].assaults;
+                    }
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/prepareFight',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "useAnimation" : useStartAnimation,
+                            "contenders" : {
+                                "left" : {
+                                    "name" : $('#leftContenderName').text(),
+                                    "school" : $('#leftContenderSchool').text(),
+                                    "academy" : $('#leftContenderAcademy').text(),
+                                    "forms" : leftContenderForms
+                                },
+                                "right" : {
+                                    "name" : $('#rightContenderName').text(),
+                                    "school" : $('#rightContenderSchool').text(),
+                                    "academy" : $('#rightContenderAcademy').text(),
+                                    "forms" : rightContenderForms
+                                }
+                            },
+                            "time" : currentTime,
+                            "assaults" : currentAssaults,
+                            "phase" : currentPhase,
+                            "arena" : arena,
+                            "match" : {
+                                "elapsedSec" : elapsedSec,
+                                "elapsedMin" : elapsedMin,
+                                "leftScore" : leftScore,
+                                "rightScore" : rightScore,
+                                "assaults" : assaults
+                            }
+                        }),
+                        success: function() {
+                        }
+                    });
+
+                    // Set overlay as initialized
+                    isOverlayInitialized = true;
+
+                    // Update buttons
+                    updateButtonsState();
+                });
+
+                $('#timer-control-button').click(function(){
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+                    startOrStopTimer();
+                });
+
+                $('#timer-update-button').click(function(){
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+                    updateTimer();
+                });
+
+                // Manage the "finish" button action
+                $("#finish-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Get current match
+                    var match = currentMatches[currentMatch];
+
+                    // Get end animation switch value
+                    var useEndAnimation = true;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/finishFight',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "useAnimation" : useEndAnimation,
+                            "match" : match,
+                            "arena" : arena
+                        })
+                    });
+
+                    // Set overlay as uninitialized
+                    isOverlayInitialized = false;
+
+                    // Update match status
+                    currentMatches[currentMatch].isFinished = true;
+                    let data = matchesTable.row(currentMatch).data();
+                    data[4] = "Done";
+                    data[5] = "3";
+                    matchesTable.row(currentMatch).data(data).draw();
+
+                    // Update number of finished matches
+                    numFinishedMatches++;
+                    updatePhaseIndicator();
+
+                    // Clear current match and timer
+                    clearMatch();
+                    clearTimer(false);
+
+                    // Update buttons
+                    updateButtonsState();
+
+                    // Update status to DONE if all matches has been processed otherwise select next match
+                    if(numFinishedMatches === currentMatches.length) {
+                        status = 'DONE';
+                        $('#change-match').prop('disabled', true).addClass('disabled');
+                        $('#get-matches-button').prop('disabled', true).addClass('disabled');
+                        $('#next-phase').prop('disabled', false).removeClass('disabled');
+                        updatePhaseIndicator();
+                    } else {
+
+                        // Select next row
+                        if(matchesTable.rows().data().length - numFinishedMatches > 0) {
+                            for(let i=0; i < matchesTable.rows().data().length; i++) {
+                                let data = matchesTable.row(i).data();
+                                if(parseInt(data[5]) !== 3) {
+                                    matchesTable.row(i).select();
+                                    matchSelected = i;
+                                    break;
+                                }
+                            }
+                        }
+
+                        // Show select match modal
+                        $('#restore-match').css('display', 'none');
+                        $('#select-match').css('display', 'inline');
+                        $('#selectMatchModal').modal('show');
+                    }
+                });
+
+                $("#pause-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Update match status
+                    let data = matchesTable.row(currentMatch).data();
+                    data[4] = "Paused";
+                    data[5] = "2";
+                    matchesTable.row(currentMatch).data(data).draw();
+
+                    // Save elapsed time score and assaults
+                    var newLeftScore = parseInt($('#leftContenderScore').text());
+                    var newRightScore = parseInt($('#rightContenderScore').text());
+                    var newAssaults = parseInt($('#consumed').text());
+                    currentMatches[currentMatch].isPaused = true;
+                    currentMatches[currentMatch].elapsedSec = elapsedSec;
+                    currentMatches[currentMatch].elapsedMin = elapsedMin;
+                    currentMatches[currentMatch].assaults = newAssaults;
+                    currentMatches[currentMatch].leftScore = newLeftScore;
+                    currentMatches[currentMatch].rightScore = newRightScore;
+
+
+                    // Clear current match and timer
+                    clearMatch();
+                    clearTimer(false);
+
+                    // Update buttons
+                    updateButtonsState();
+
+                    // Select next row
+                    if(matchesTable.rows().data().length - numFinishedMatches > 0) {
+                        for(let i=0; i < matchesTable.rows().data().length; i++) {
+                            let data = matchesTable.row(i).data();
+                            if(parseInt(data[5]) !== 3) {
+                                matchesTable.row(i).select();
+                                matchSelected = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Show select next match modal
+                    $('#restore-match').css('display', 'none');
+                    $('#select-match').css('display', 'inline');
+                    $('#selectMatchModal').modal('show');
+                });
+
+                // Manage the "update" button action
+                $("#refresh-match-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Skip if match does not come from server
+                    if(currentMatches[currentMatch].isStandalone) {
+                        return false;
+                    }
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/getMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "id" : currentMatch
+                        })
+                    });
+                });
+
+                // Manage the "update" button action
+                $("#update-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Get left contender forms ids
+                    var leftContenderForms = [];
+                    $('#leftContenderClosedForms').find('.form.present').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        leftContenderForms.push(formId);
+                    });
+
+                    // Get right contender forms ids
+                    var rightContenderForms = [];
+                    $('#rightContenderClosedForms').find('.form.present').each(function(index, value) {
+                        var formId = $(this).data('form');
+                        rightContenderForms.push(formId);
+                    });
+
+                    // Update match scores and assaults
+                    var newLeftScore = parseInt($('#leftContenderScore').text());
+                    var newRightScore = parseInt($('#rightContenderScore').text());
+                    var newAssaults = parseInt($('#consumed').text());
+                    currentMatches[currentMatch].match.firstContender.score = newLeftScore;
+                    currentMatches[currentMatch].match.secondContender.score = newRightScore;
+                    currentMatches[currentMatch].match.consumed = newAssaults;
+
+                    // Perform AJAX request to update fight info
+                    $.ajax({
+                        url: '/updateFightInfo',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "contenders" : {
+                                "left" : {
+                                    "name" : $('#leftContenderName').text(),
+                                    "school" : $('#leftContenderSchool').text(),
+                                    "academy" : $('#leftContenderAcademy').text(),
+                                    "forms" : leftContenderForms
+                                },
+                                "right" : {
+                                    "name" : $('#rightContenderName').text(),
+                                    "school" : $('#rightContenderSchool').text(),
+                                    "academy" : $('#rightContenderAcademy').text(),
+                                    "forms" : rightContenderForms
+                                }
+                            },
+                            "time" : currentTime,
+                            "assaults" : currentAssaults,
+                            "phase" : currentPhase,
+                        })
+                    });
+
+                    // Perform AJAX request to udpdate match scores
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#plus-left-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#leftContenderScore').text()) + 1;
+                    $('#leftContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Update match
+                    currentMatches[currentMatch].match.firstContender.score++;
+                    currentMatches[currentMatch].match.consumed++;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#plus-right-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#rightContenderScore').text()) + 1;
+                    $('#rightContenderScore').text(newScore);
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Update match
+                    currentMatches[currentMatch].match.secondContender.score++;
+                    currentMatches[currentMatch].match.consumed++;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#minus-left-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#leftContenderScore').text()) - 1;
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    if(newScore < 0 || newAssaults < 0) {
+                        return false;
+                    }
+                    $('#leftContenderScore').text(newScore);
+                    $('#consumed').text(newAssaults);
+
+                    // Update match
+                    currentMatches[currentMatch].match.firstContender.score--;
+                    currentMatches[currentMatch].match.consumed--;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#minus-right-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Update score and assaults
+                    var newScore = parseInt($('#rightContenderScore').text()) - 1;
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    if(newScore < 0 || newAssaults < 0) {
+                        return false;
+                    }
+                    $('#rightContenderScore').text(newScore);
+                    $('#consumed').text(newAssaults);
+
+                    // Update match
+                    currentMatches[currentMatch].match.secondContender.score--;
+                    currentMatches[currentMatch].match.consumed--;
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#increase-assaults-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // If in current match double OHs are void do nothing
+                    if(currentDoppioVoid) {
+                        return false;
+                    }
+
+                    // Update assaults
+                    var newAssaults = parseInt($('#consumed').text()) + 1;
+                    $('#consumed').text(newAssaults);
+
+                    // Update consumed assaults
+                    currentMatches[currentMatch].match.consumed++;
+                    if(currentMatches[currentMatch].match.consumed > 0) {
+                        $('#decrease-assaults-button').removeClass('disabled');
+                    }
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $("#decrease-assaults-button").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // If in current match double OHs are void do nothing
+                    if(currentDoppioVoid) {
+                        return false;
+                    }
+
+                    // Update assaults
+                    var newAssaults = parseInt($('#consumed').text()) - 1;
+                    if(newAssaults < 0) return false;
+                    $('#consumed').text(newAssaults);
+
+                    // Update consumed assaults
+                    currentMatches[currentMatch].match.consumed--;
+                    if(currentMatches[currentMatch].match.consumed === 0) {
+                        $('#decrease-assaults-button').addClass('disabled');
+                    }
+
+                    // Perform AJAX request
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                // Edit left contender info
+                var isEditingLeft = false;
+                $("#edit-left-contender").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Toggle edit button
+                    if(!isEditingLeft) {
+                        $("#edit-left-contender").html('<i class="fas fa-check"></i>');
+                        $("#edit-left-contender").attr('data-original-title', 'Apply changes');
+                    } else {
+                        $("#edit-left-contender").html('<i class="fas fa-edit"></i>');
+                        $("#edit-left-contender").attr('data-original-title', 'Edit left contender');
+                    }
+                    isEditingLeft = !isEditingLeft;
+
+                    // Editing started: convert labels into input fields
+                    if(isEditingLeft) {
+                        $('#leftContenderName').parent('div').html('<input type="text" id="leftContenderName" class="form-control" value="' + $('#leftContenderName').text() + '">');
+                        $('#leftContenderBattlename').parent('div').html('<input type="text" id="leftContenderBattlename" class="form-control" value="' + $('#leftContenderBattlename').text() + '">');
+                        $('#leftContenderAcademy').parent('div').html('<input type="text" id="leftContenderAcademy" class="form-control" value="' + $('#leftContenderAcademy').text() + '">');
+                        $('#leftContenderSchool').parent('div').html('<input type="text" id="leftContenderSchool" class="form-control" value="' + $('#leftContenderSchool').text() + '">');
+                        var formBoxes = $('#leftContenderClosedForms .form[data-form]');
+                        formBoxes.each(function(index, value) {
+                            var $checkBox = $(this).find('[type=checkbox]');
+                            $checkBox.prop('disabled', false);
+                            $(this).removeClass('disabled');
+                        });
+                    }
+
+                    // Editing finished: convert input fields back to labels and update left contender info
+                    else {
+
+                        // Convert input fields back to labels
+                        $('#leftContenderName').parent('div').html('<span id="leftContenderName">' + $('#leftContenderName').val() + '</span>');
+                        $('#leftContenderBattlename').parent('div').html('<span id="leftContenderBattlename">' + $('#leftContenderBattlename').val() + '</span>');
+                        $('#leftContenderAcademy').parent('div').html('<span id="leftContenderAcademy">' + $('#leftContenderAcademy').val() + '</span>');
+                        $('#leftContenderSchool').parent('div').html('<span id="leftContenderSchool">' + $('#leftContenderSchool').val() + '</span>');
+                        var formBoxes = $('#leftContenderClosedForms .form[data-form]');
+                        formBoxes.each(function(index, value) {
+                            var $checkBox = $(this).find('[type=checkbox]');
+                            $checkBox.prop('disabled', true);
+                            $(this).addClass('disabled');
+                        });
+
+                        // Update left contender info
+                        let currentFirstContender = currentMatches[currentMatch].match.firstContender;
+                        let currentSecondContender = currentMatches[currentMatch].match.secondContender;
+                        if(!currentFirstContender) {
+                            currentFirstContender = newContender();
+                        }
+                        currentFirstContender.name = $('#leftContenderName').text();
+                        currentFirstContender.academy = $('#leftContenderAcademy').text();
+                        currentFirstContender.school = $('#leftContenderSchool').text();
+                        currentFirstContender.battlename = $('#leftContenderBattlename').text();
+                        currentFirstContender.forms = getSelectedForms($('#leftContenderClosedForms'));
+
+                        // Update match status
+                        if(currentSecondContender) {
+                            currentMatches[currentMatch].match.isComplete = true;
+                            updateButtonsState();
+                        }
+                    }
+                });
+
+                // Edit right contender info
+                var isEditingRight = false;
+                $("#edit-right-contender").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Toggle edit button
+                    if(!isEditingRight) {
+                        $("#edit-right-contender").html('<i class="fas fa-check"></i>');
+                        $("#edit-right-contender").attr('data-original-title', 'Apply changes');
+                    } else {
+                        $("#edit-right-contender").html('<i class="fas fa-edit"></i>');
+                        $("#edit-right-contender").attr('data-original-title', 'Edit right contender');
+                    }
+                    isEditingRight = !isEditingRight;
+
+                    // Editing started: convert labels into input fields
+                    if(isEditingRight) {
+                        $('#rightContenderName').parent('div').html('<input type="text" id="rightContenderName" class="form-control" value="' + $('#rightContenderName').text() + '">');
+                        $('#rightContenderBattlename').parent('div').html('<input type="text" id="rightContenderBattlename" class="form-control" value="' + $('#rightContenderBattlename').text() + '">');
+                        $('#rightContenderAcademy').parent('div').html('<input type="text" id="rightContenderAcademy" class="form-control" value="' + $('#rightContenderAcademy').text() + '">');
+                        $('#rightContenderSchool').parent('div').html('<input type="text" id="rightContenderSchool" class="form-control" value="' + $('#rightContenderSchool').text() + '">');
+                        var formBoxes = $('#rightContenderClosedForms .form[data-form]');
+                        formBoxes.each(function(index, value) {
+                            var $checkBox = $(this).find('[type=checkbox]');
+                            $checkBox.prop('disabled', false);
+                            $(this).removeClass('disabled');
+                        });
+                    }
+
+                    // Editing finished: convert input fields back to labels  and update right contender info
+                    else {
+
+                        // Convert input fields back to labels
+                        $('#rightContenderName').parent('div').html('<span id="rightContenderName">' + $('#rightContenderName').val() + '</span>');
+                        $('#rightContenderBattlename').parent('div').html('<span id="rightContenderBattlename">' + $('#rightContenderBattlename').val() + '</span>');
+                        $('#rightContenderAcademy').parent('div').html('<span id="rightContenderAcademy">' + $('#rightContenderAcademy').val() + '</span>');
+                        $('#rightContenderSchool').parent('div').html('<span id="rightContenderSchool">' + $('#rightContenderSchool').val() + '</span>');
+                        var formBoxes = $('#rightContenderClosedForms .form[data-form]');
+                        formBoxes.each(function(index, value) {
+                            var $checkBox = $(this).find('[type=checkbox]');
+                            $checkBox.prop('disabled', true);
+                            $(this).addClass('disabled');
+                        });
+
+                        // Update right contender info
+                        if(!currentSecondContender) {
+                            currentSecondContender = newContender();
+                        }
+                        currentSecondContender.name = $('#rightContenderName').text();
+                        currentSecondContender.academy = $('#rightContenderAcademy').text();
+                        currentSecondContender.school = $('#rightContenderSchool').text();
+                        currentSecondContender.battlename = $('#rightContenderBattlename').text();
+                        currentSecondContender.forms = getSelectedForms($('#rightContenderClosedForms'));
+
+                        // Update match status
+                        if(currentFirstContender) {
+                            currentMatch.isComplete = true;
+                            updateButtonsState();
+                        }
+                    }
+                });
+
+                // Edit timer info
+                var isEditingTimer = false;
+                $("#edit-timer").click(function() {
+
+                    // Skip if disabled
+                    if($(this).hasClass('disabled')) {
+                        return false;
+                    }
+
+                    // Toggle edit button
+                    if(!isEditingTimer) {
+                        $("#edit-timer").html('<i class="fas fa-check"></i>');
+                        $("#edit-timer").attr('data-original-title', 'Apply changes');
+                    } else {
+                        $("#edit-left-contender").html('<i class="fas fa-edit"></i>');
+                        $("#edit-left-contender").attr('data-original-title', 'Edit timer data');
+                    }
+                    isEditingTimer = !isEditingTimer;
+
+                    // Editing started: convert labels into input fields
+                    if(isEditingTimer) {
+                        $('#timer').html('<input type="text" id="elapsedTime" class="form-control" value="' + $('#timer-inner').text() + '"><span>/ </span><input type="text" id="timeoutTime" class="form-control" value="' + $('#timeout').text().substr(-5, 5) + '">');
+                    }
+
+                    // Editing finished: convert input fields back to labels and update timer info
+                    else {
+
+                        // Convert input fields back to labels
+                        $('#timer').html('<span id="timer-inner" style="display: inline;">' + $('#elapsedTime').val() + '</span><span id="timeout" style="display: inline;"> / ' + $('#timeoutTime').val() + '</span>');
+
+                        // Update timer info
+                        const [mins, secs] = $('#timer-inner').text().split(":");
+                        $('#timer').countimer('destroy');
+                        elapsedMin = mins;
+                        elapsedSec = secs;
+                        initTimer(mins, secs);
+                        setTimer(mins, secs);
+                        isTimerStarted = false;
+                    }
+                });
+
+
+                // Create new standalone match
+                $("#confirm-new-match").click(function() {
+
+                    // Clear current match
+                    clearMatch();
+                    clearTimer(true);
+
+                    // Get new match info from modal dialog
+                    let phase = $('#new-match-phase').val();
+                    let time = parseInt($('#new-match-time').val());
+                    let assaults =  parseInt($('#new-match-assaults').val());
+                    let strategy = $('#new-match-strategy').val();
+                    let doppioVoid = $('#new-match-doppio-void').is(':checked');
+
+                    // Create new match 
+                    let newMatch = {
+                        match : newEmptyMatch(),
+                        phase : phase,
+                        isFinished : false,
+                        isPaused : false,
+                        isStandalone : true
+                    };
+                    currentMatch = currentMatches.length;
+                    currentMatches.push(newMatch);
+
+                    // Set new match info
+                    currentPhase = phase;
+                    currentTime = newMatch.match.time = time;
+                    currentAssaults = newMatch.match.assaults = assaults;
+                    currentStrategy = newMatch.match.strategy = strategy;
+                    currentDoppioVoid = newMatch.match.doppioVoid = doppioVoid;
+
+                    // Display current match information
+                    $('#assaults').text(
+                        currentStrategy === "FIXED" ?
+                            currentAssaults + " assaults fixed" :
+                                currentStrategy === "BEST" ? "Best out of " + currentAssaults + " assaults" :
+                                    "");
+                    $('#doppioVoids').text(
+                        currentDoppioVoid ? "DOPPIO counts as void" : "DOPPIO consumes the assault"
+                    );
+
+                    // Reset scores and assaults counter
+                    $('#leftContenderScore').text(0);
+                    $('#rightContenderScore').text(0);
+                    $('#consumed').text(0);
+
+                    // Reset timer and set timeout
+                    timeout = time;
+                    isTimeElapsed = false;
+                    isTimerStarted = false;
+                    isTimerPaused = true;
+                    $('#timer-inner').css("color", "black");
+                    if(timeout > 0) {
+                        var min = Math.floor(timeout/60);
+                        var secs = timeout%60;
+                        $('#timeout').text('/' + min.toString().padStart(2, '0') + ":" + secs.toString().padStart(2, '0'))
+                        setTimer(0, 0);
+                    } else {
+                        $('#timeout').text("/ ∞");
+                    }
+
+                    // Enable contenders info editing
+                    $("#edit-left-contender").removeClass("disabled");
+                    $("#edit-left-contender").prop('disabled', false);
+                    $("#edit-right-contender").removeClass("disabled");
+                    $("#edit-right-contender").prop('disabled', false);
+
+                    // Update phase indicator
+                    updatePhaseIndicator();
+
+                    // Start contenders editing
+                    $("#edit-left-contender").trigger( "click" );
+                    $("#edit-right-contender").trigger( "click" );
+                });
+
+                $("#change-match").click(function() {
+                    $('#restore-match').css('display', 'none');
+                    $('#select-match').css('display', 'inline');
+                    $('#selectMatchModal').modal('show');
+                });
+
+                $("#manage-match").click(function() {
+                    $('#restore-match').css('display', 'inline');
+                    $('#select-match').css('display', 'none');
+                    $('#selectMatchModal').modal('show');
+                });
+
+                $("#restore-match").click(function() {
+
+                    // No selection
+                    if(matchSelected < 0) {
+                        return;
+                    }
+
+                    // Avoid restoring unfinished matches
+                    if(!currentMatches[matchSelected].isFinished) {
+                        $('#message-notification-text').html('<strong>Error! Cannot restore a non-finished match</strong> ');
+                        $('#message-notification').show().fadeOut(5000);
+                        return;
+                    }
+
+                    // Restore match status
+                    currentMatches[matchSelected].isFinished = false;
+                    currentMatches[matchSelected].isPaused = false;
+                    currentMatches[matchSelected].elapsedSec = 0;
+                    currentMatches[matchSelected].elapsedMin = 0;
+                    currentMatches[matchSelected].leftScore = 0;
+                    currentMatches[matchSelected].rightScore = 0;
+                    currentMatches[matchSelected].assaults = 0;
+
+                    // Update match in table
+                    let data = matchesTable.row(matchSelected).data();
+                    var row = matchesTable.row(matchSelected);
+                    $('.done-match.selected').removeClass('done-match');
+                    data[4] = "Pending";
+                    data[5] = "1";
+                    matchesTable.row(matchSelected).data(data).draw();
+                });
+
+                $("#select-match").click(function() {
+
+                    // No selection
+                    if(matchSelected < 0) {
+                        return;
+                    }
+
+                    // Avoid selecting finished matches
+                    if(currentMatches[matchSelected].isFinished) {
+                        $('#message-notification-text').html('<strong>Error! Cannot select a finished match</strong> ');
+                        $('#message-notification').show().fadeOut(5000);
+                        return;
+                    }
+
+                    // Set current match
+                    currentMatch = matchSelected;
+                    currentTime = currentMatches[matchSelected].match.time;
+                    currentAssaults = currentMatches[matchSelected].match.assaults;
+                    currentDoppioVoid = currentMatches[matchSelected].match.doppioVoid;
+                    currentStrategy = currentMatches[matchSelected].match.strategy;
+
+                    // Display match
+                    displayCurrentMatch();
+
+                    // Clear selection
+                    matchesTable.row(matchSelected).deselect();
+                    matchSelected = -1;
+                    $('#selected-match-label').text("No match currently selected");
+
+                    // Hide modal
+                    $('#selectMatchModal').modal('hide');
+
+                    // Update buttons
+                    updateButtonsState();
+                });
+
+                $('#plus-left-white-card-button').click(function() {
+
+                    // Get current number of left white cards
+                    let cards = parseInt($('#left-white-cards').text());
+
+                    // Update white cards label
+                    $('#left-white-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[0]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-left-white-card-button').click(function() {
+
+                    // Get current number of left white cards
+                    let cards = parseInt($('#left-white-cards').text());
+
+                    // Update white cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#left-white-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[0]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-left-yellow-card-button').click(function() {
+
+                    // Get current number of left yellow cards
+                    let cards = parseInt($('#left-yellow-cards').text());
+
+                    // Update yellow cards label
+                    $('#left-yellow-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[1]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-left-yellow-card-button').click(function() {
+
+                    // Get current number of left yellow cards
+                    let cards = parseInt($('#left-yellow-cards').text());
+
+                    // Update yellow cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#left-yellow-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[1]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-left-red-card-button').click(function() {
+
+                    // Get current number of left red cards
+                    let cards = parseInt($('#left-red-cards').text());
+
+                    // Update red cards label
+                    $('#left-red-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[2]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-left-red-card-button').click(function() {
+
+                    // Get current number of left red cards
+                    let cards = parseInt($('#left-red-cards').text());
+
+                    // Update red cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#left-red-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[2]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-left-black-card-button').click(function() {
+
+                    // Get current number of left black cards
+                    let cards = parseInt($('#left-black-cards').text());
+
+                    // Update black cards label
+                    $('#left-black-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[3]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-left-black-card-button').click(function() {
+
+                    // Get current number of left red cards
+                    let cards = parseInt($('#left-black-cards').text());
+
+                    // Update black cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#left-black-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.firstContender.penalties[3]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-right-white-card-button').click(function() {
+
+                    // Get current number of right white cards
+                    let cards = parseInt($('#right-white-cards').text());
+
+                    // Update white cards label
+                    $('#right-white-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[0]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-right-white-card-button').click(function() {
+
+                    // Get current number of right white cards
+                    let cards = parseInt($('#right-white-cards').text());
+
+                    // Update white cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#right-white-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[0]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-right-yellow-card-button').click(function() {
+
+                    // Get current number of right yellow cards
+                    let cards = parseInt($('#right-yellow-cards').text());
+
+                    // Update yellow cards label
+                    $('#right-yellow-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[1]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-right-yellow-card-button').click(function() {
+
+                    // Get current number of right yellow cards
+                    let cards = parseInt($('#right-yellow-cards').text());
+
+                    // Update yellow cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#right-yellow-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[1]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-right-red-card-button').click(function() {
+
+                    // Get current number of right red cards
+                    let cards = parseInt($('#right-red-cards').text());
+
+                    // Update red cards label
+                    $('#right-red-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[2]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-right-red-card-button').click(function() {
+
+                    // Get current number of right red cards
+                    let cards = parseInt($('#right-red-cards').text());
+
+                    // Update red cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#right-red-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[2]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#plus-right-black-card-button').click(function() {
+
+                    // Get current number of right black cards
+                    let cards = parseInt($('#right-black-cards').text());
+
+                    // Update black cards label
+                    $('#right-black-cards').text(cards + 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[3]++;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#minus-right-black-card-button').click(function() {
+
+                    // Get current number of right red cards
+                    let cards = parseInt($('#right-black-cards').text());
+
+                    // Update black cards label
+                    if(cards == 0) {
+                        return false;
+                    }
+                    $('#right-black-cards').text(cards - 1);
+
+                    // Update penalties
+                    currentMatches[currentMatch].match.secondContender.penalties[3]--;
+
+                    // Send update match message
+                    $.ajax({
+                        url: '/updateMatch',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                            "match" : currentMatches[currentMatch]
+                        }),
+                        success: function() {
+                        }
+                    });
+                });
+
+                $('#connect').click(function() {
+
+                    // Create new socket
+                    let server = $('#server-address').val();
+                    socket = new WebSocket('ws://' + server + '/registerScorekeeper?arena=' + arena);
+
+                    // Update server connection status
+                    socket.onopen = handleSocketOpen;
+                    socket.onclose =  handleSocketClose;
+                    socket.onerror =  handleSocketError;
+
+                    // Set web socket message callback
+                    socket.onmessage = handleSocketMessage;
+                });
+
+                $('#load-stream').click(function() {
+                    let videoURL = $('#srtmp-server-address').val();
+                    videoPlayer.src({
+                      type: 'rtmp/mp4',
+                      src: videoURL
+                    });
+                });
+
+                $('#get-matches-button').click(function() {
+
+                    // Send get matches request
+                    $.ajax({
+                        url: '/getMatches',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena
+                        }),
+                        success: function(data, textStatus, xhr) {
+
+                            // Clear state variables
+                            clearStateVariables();
+
+                            // Clear matches table
+                            matchesTable.clear();
+
+                            // Get matches
+                            var matches = data.matches;
+                            console.log(matches);
+                            if(!matches) {
+                                status = "STOP";
+                                updatePhaseIndicator();
+                                return;
+                            }
+
+                            // Clear matches
+                            for(let matchContainer of matches) {
+                                let match = matchContainer.match;
+                                match.firstContender.penalties = [0, 0, 0, 0];
+                                match.firstContender.score = 0;
+                                match.firstContender.style = 0;
+                                match.firstContender.stylePartials = [];
+                                match.secondContender.penalties = [0, 0, 0, 0];
+                                match.secondContender.score = 0;
+                                match.secondContender.style = 0;
+                                match.secondContender.stylePartials = [];
+                            }
+
+                            // Update status
+                            status = "STARTED";
+                            $('#change-match').prop('disabled', false).removeClass('disabled');
+
+                            // Update state variables
+                            matches.forEach((match) => {
+                                match.status = "SCHEDULED";
+                                currentMatches.push(match);
+                            });
+                            currentAthletes = data["athletes"];
+                            currentPhase = data["phase"];
+
+                            // Update phase indicator
+                            updatePhaseIndicator();
+
+                            // Populate select next match dialog
+                            populateMatchSelectionTable(currentMatches, currentAthletes);
+
+                            // Restore button state
+                            $("#get-matches-button").prop('disabled', true).addClass('disabled');
+                            $("#get-matches-button").html(`Get Matches`);
+
+                            // Open up select next match dialog
+                            $('#restore-match').css('display', 'none');
+                            $('#select-match').css('display', 'inline');
+                            $('#selectMatchModal').modal('show');
+                        },
+                        error : function(xhr) {
+
+                            // Get results
+                            var data = xhr.responseJSON;
+
+                            // Restore button state
+                            $("#get-matches-button").prop('disabled', false).removeClass('disabled');
+                            $("#get-matches-button").html(`Get Matches`);
+
+                            // Check status
+                            if(xhr.status === 400) {
+                                $('#message-notification-text').html('<strong>Error!</strong> ' + data.error);
+                                $('#message-notification').show().fadeOut(5000);
+                            }
+                        }
+                    });
+
+                    // Disable button and show spinner
+                    $("#get-matches-button").prop('disabled', true).addClass('disabled');
+                    $("#get-matches-button").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Fetching...`);
+                });
+
+
+                function finishPhase() {
+
+                    // Send finish phase message
+                    $.ajax({
+                        url: '/finishPhase',
+                        type: 'POST',
+                        contentType: "application/json",
+                        handleAs: "json",
+                        data: JSON.stringify({
+                            "arena" : arena,
+                        }),
+                        success: function() {
+                        }
+                    });
+
+                    // Clear state variables
+                    clearStateVariables();
+
+                    // Clear current match and timer
+                    clearMatch();
+                    clearTimer(false);
+
+                    // Clear matches table
+                    matchesTable.clear();
+
+                    // Update status
+                    status = "WAITING";
+                    $('#change-match').prop('disabled', true).addClass('disabled');
+                    $("#get-matches-button").prop('disabled', false).removeClass('disabled');
+                    updatePhaseIndicator();
+                }
+
+                $('#next-phase').click(function() {
+
+                    // Check matches state
+                    let unfinishedMatches = 0;
+                    for(let match of currentMatches) {
+                        if(!match.isFinished) {
+                            unfinishedMatches++;
+                        }
+                    }
+                    if(unfinishedMatches > 0) {
+                        $('#confirm-finish-phase').modal('show');
+                    } else {
+                        finishPhase();
+                    }
+                });
+
+                $('#confirm-finish').click(function() {
+                    finishPhase();
+                });
+
+                $('#new-match-button').click(function() {
+                    $('#new-match-phase').val(currentPhase);
+                    $('#new-match-time').val(currentTime);
+                    $('#new-match-assaults').val(currentAssaults);
+                    $('#new-match-strategy').val(currentStrategy);
+                    $('#new-match-doppio-void').prop('checked', currentDoppioVoid);
+                    $('#newMatchModal').modal('show');
+                });
+
+            });
+        </script>
+    </body>
+</html>

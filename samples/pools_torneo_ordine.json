@@ -1,0 +1,36 @@
+{
+    "pools" : [
+        {
+            "id" : "A",
+            "sheetRankRange" : "Gironi!A12:D19",
+            "sheetNameCell" : "Gironi!A10",
+            "sheetMatchesRange" : "Incontri!A2:D85",
+            "arena" : "A",
+            "round" : 0
+        },
+        {
+            "id" : "B",
+            "sheetRankRange" : "Gironi!F12:I19",
+            "sheetNameCell" : "Gironi!F10",
+            "sheetMatchesRange" : "Incontri!F2:I85",
+            "arena" : "B",
+            "round" : 0
+        },
+        {
+            "id" : "C",
+            "sheetRankRange" : "Gironi!A34:D41",
+            "sheetNameCell" : "Gironi!A32",
+            "sheetMatchesRange" : "Incontri!K2:N85",
+            "arena" : "A",
+            "round" : 1
+        },
+        {
+            "id" : "D",
+            "sheetRankRange" : "Gironi!F34:I41",
+            "sheetNameCell" : "Gironi!F32",
+            "sheetMatchesRange" : "Incontri!P2:S85",
+            "arena" : "B",
+            "round" : 1
+        }
+    ]
+}

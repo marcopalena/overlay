@@ -1,0 +1,19 @@
+{
+    "startRow" : 3,
+    "seedCol" : "A",
+    "nameCol" : "B",
+    "scoreCol" : "C",
+    "styleCol" : "D",
+    "layout" : [
+        {
+            "level" : 0,
+            "blocks" : 4,
+            "spacing" : 1
+        },
+        {
+            "level" : 1,
+            "blocks" : 2,
+            "spacing" : 0
+        }
+    ]
+}
